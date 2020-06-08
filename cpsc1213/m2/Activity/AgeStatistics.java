@@ -39,17 +39,24 @@ public class AgeStatistics {
                          + (ageInYears * 525600) + " minutes.");
       // Centuries                            
       System.out.println("\tYour age in centuries is " 
-                         + ((double) ageInYears / 100) + " centuries");
+                         + ((double) ageInYears / 100) + " centuries.");
                          
       // display max heart rate
-      System.out.print("Your max heart rate is ");
-      if (gender == FEMALE) { // calculate female MHR
+      
+      if (gender == FEMALE) {       // calculate female MHR
          maxHeartRate = 209 - (0.7 * ageInYears);
-      }
-      else { // calculate male MHR
+      } else if (gender == MALE) {  // calculate male MHR
          maxHeartRate = 214 - (0.8 * ageInYears);
+      } else {                      // Handle invalid input
+         System.out.print("Please enter 0 or 1 for gender to calculate" 
+                          + " max heart rate");
+         maxHeartRate = 0;
       }
-      System.out.println(maxHeartRate + " beats per minute.");               
+      
+      if (maxHeartRate != 0) {
+         System.out.print("Your max heart rate is "
+                          + maxHeartRate + " beats per minute.");               
+      }
    }
    
    static final int FEMALE = 1;
