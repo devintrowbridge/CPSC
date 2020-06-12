@@ -273,24 +273,43 @@
     \paragraph{3.11.1}
     \renewcommand{\labelenumi}{\alph{enumi}.}
     \begin{enumerate}
-        \item 
+        \item $f^{-1}$ is not well defined because $f^{-1}(w) = d$ and $f^{-1}(w) = b$
+        \item \includegraphics{3_11_1b}
+        \item $f^{-1}$ is not well defined because $f^{-1}(y)$ is not defined.
     \end{enumerate}
     
     \paragraph{3.11.2}
     \renewcommand{\labelenumi}{\alph{enumi}.}
     \begin{enumerate}
-        \item 
+        \item $f^{-1}$ is well defined. $f^{-1}(x)=x-3$
+        \item Because there is no integer x such that $f(x)=2x+34=3$, $f(x)$ is not onto. Therfore $f^{-1}$ is not well defined.
+        \addtocounter{enumi}{3}
+        \item $f(001)=f(101)=101$, therfore $f(x)$ is not one-to-one. Also there is no x such that $f(x)=000$, therfore $f(x)$ is not onto. Since $f(x)$ is neither one-to-one nor onto, $f^{-1}$ is not well defined.
     \end{enumerate}
     
     \paragraph{3.12.2}
     \renewcommand{\labelenumi}{\alph{enumi}.}
     \begin{enumerate}
+        \item $(f \circ g)(0)=(2^{(0)})^2=1^2=1$ 
+        \item $(f \circ h)(52)=(\lceil \frac{(52)}{5} \rceil)^2 = (11)^2 = 121$
         \item 
+            \begin{align*}
+                (g \circ h \circ f)(4) &= 2^{\lceil \frac{(4)^2}{5} \rceil} \\
+                                       &= 2^{\lceil \frac{16}{5} \rceil} \\
+                                       &= 2^{4} \\
+                                       &= 16
+            \end{align*}
+        \addtocounter{enumi}{1}
+        \item $(f \circ g)(x)=(2^x)^2 = 2^{2x}$
     \end{enumerate}
     
     \paragraph{3.12.5}
     \renewcommand{\labelenumi}{\alph{enumi}.}
     \begin{enumerate}
-        \item 
+        \item The range of g is \{2, 3\}
+        \item The domain of $h \circ g$ is \{a, b, c\}
+        \item $h^{-1}(y) = 3$
+        \item The domain of of $h^{-1} \circ h$ is \{1, 2, 3, 4\}
+        \item $(h \circ g)(b)=w$
     \end{enumerate}
 \end{document}          
