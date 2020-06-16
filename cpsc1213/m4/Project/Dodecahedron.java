@@ -142,7 +142,7 @@ public class Dodecahedron {
       output += "\tsurface area = ";
       output += fmt.format(surfaceArea()) + " square units\n";
       
-      output += "\tolume = "; 
+      output += "\tvolume = "; 
       output += fmt.format(volume()) + " cubic units\n";
       
       output += "\tsurface/volume ratio = ";
