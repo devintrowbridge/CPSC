@@ -2,8 +2,12 @@
 \usepackage[margin=0.5in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
 
 \begin{document}
     \renewcommand{\labelenumi}{\alph{enumi}.}
@@ -51,17 +55,48 @@
         
     \paragraph{4.2.1}
         \begin{enumerate}
-            \item 
+            \item Anti-reflexive because $x < x$ is never true. 
+                  Anti-symmetric because if $x < y$ then y cannot be less than x.
+                  Transitive because if $x < y$ and $y < z$ then $x < z$
+            \item Reflexive because $x \leq x$ is always true.
+                  Anti-symmetric because if $x \neq y$ and $x \leq y$ then y cannot be less than x.
+                  Transitive because if $x \leq y$ and $y \leq z$ then $x \leq z$
+            \item Reflexive because $x^n = x$ when $n=1$.
+                  The relation is anti-symmetric because the $x^n = y$ and $y^m = x$ are only true for some positive integer m and n when $x = y$ and $m=n=1$.
+                  Transitive because if $x^n=y$ and $y^m=z$ for some positive integer n and m, then $z = (x^n)^m = x^{nm}$. 
+            \item Reflexive because for any positive integer x, $x=x*1$ so xDx.
+                  Anti-symmetric, x evenly divides y implies $x \leq y$. $y \leq x$ can only be true if $y=x$, therfore, the relation is anti-symmetric.
+                  Transitive. xDy implies $y=xn$ for some positive integer n. yDz implies $z=ym$ for some positive integer m. Combining these gives $z=nmx$ which implies that xDz, therfore the relation is transitive.
+            \item Reflexive. $|x-x| \leq 2$ becomes $0 \leq 2$ which is always true.
+                  Symmetric because $|x-y| = |y-x|$
+                  Not transitive because $|0-2| \leq 2$ and $|2-4| \leq 2$ but $|0-4| \nleq 2$
+            \item Reflexive because $x-x=0$.
+                  Symmetric because $x - y$ is rational and $y - x$ is rational.
+                  Transitive because if $x-y$ is rational and $y-z$ rational then $x-z$ is rational.
         \end{enumerate}
     
     \paragraph{4.2.3}
         \begin{enumerate}
-            \item 
+            \item No, a reflexive relation implies that for every $x \in R$, it is true that xRx. A anti-reflexive relation implies that for every $x \in R$, it is false that xRx.
+            \item No a symmetric relation implies that for every $x \in R$ it is true that xRy and yRx. An anti-symmetric relation implies that for every $x \in R$ it is false that xRy and yRx.
         \end{enumerate}
     
     \paragraph{4.2.5}
         \begin{enumerate}
             \item 
+                \begin{enumerate}
+                    \item Anti-reflexive because $|A-A| = |\emptyset| = 0 \neq 1$ \newline
+                    \item Neither symmetric nor anti-symmetric. Not symmetric because if $A=\{a,b\}$ and $B=\{b\}$ then $|A-B| = |\{a\}| = 1$ which does not equal $|B-A| = |\emptyset| = 0$. Not anti-symmetric because if $A=\{a,b\}$ and $B=\{b,c\}$ then $A \neq B$ and 
+                  $$|A-B| = |\{a\}| = 1 = |\{b\}| = |B-A|$$
+                    \item Not transitive. If A = \{a,c\}, B=\{a,b\}, and C=\{b\} then 
+                    \begin{align*}
+                        |A-B| &= |\{c\}| = 1 \\
+                        |B-C| &= |\{a\}| = 1 \\
+                        |A-C| &= |\{a,e\}| = 2
+                    \end{align*}
+
+                \end{enumerate}
+            \item
         \end{enumerate}
     
     \paragraph{4.3.1}
