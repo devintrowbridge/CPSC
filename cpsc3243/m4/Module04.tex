@@ -11,6 +11,7 @@
 
 \begin{document}
     \renewcommand{\labelenumi}{\alph{enumi}.}
+    \renewcommand{\labelenumii}{(\arabic{enumii})}
     
     \paragraph{4.1.1}
         \begin{enumerate}
@@ -87,51 +88,122 @@
                 \begin{enumerate}
                     \item Anti-reflexive because $|A-A| = |\emptyset| = 0 \neq 1$ \newline
                     \item Neither symmetric nor anti-symmetric. Not symmetric because if $A=\{a,b\}$ and $B=\{b\}$ then $|A-B| = |\{a\}| = 1$ which does not equal $|B-A| = |\emptyset| = 0$. Not anti-symmetric because if $A=\{a,b\}$ and $B=\{b,c\}$ then $A \neq B$ and 
-                  $$|A-B| = |\{a\}| = 1 = |\{b\}| = |B-A|$$
+                        $$|A-B| = |\{a\}| = 1 = |\{b\}| = |B-A|$$
                     \item Not transitive. If A = \{a,c\}, B=\{a,b\}, and C=\{b\} then 
                     \begin{align*}
                         |A-B| &= |\{c\}| = 1 \\
                         |B-C| &= |\{a\}| = 1 \\
                         |A-C| &= |\{a,e\}| = 2
                     \end{align*}
-
                 \end{enumerate}
             \item
+                \begin{enumerate}
+                    \item Anti-reflexive because $A \cap A = A \neq \emptyset$
+                    \item Symmetric because $A \cap B = \emptyset = B \cap A$
+                    \item Not transitive because if $A = \{a,b\}, B=\{c\}, C=\{a\}$ then $A \cap B = \emptyset$ and $B \cap C = \emptyset$ and $A \cap C = \{a\} \neq \emptyset$
+                \end{enumerate}
         \end{enumerate}
     
     \paragraph{4.3.1}
         \begin{enumerate}
-            \item 
+            \item 2
+            \item 3
+            \item c
+            \item g
+            \item There are no self loops in the graph.
+            \item It is not a walk, trail, or path because there is no edge $(f,c)$.
         \end{enumerate}
     
     \paragraph{4.3.2}
         \begin{enumerate}
-            \item 
+            \item It is a circuit, but not a cycle.
+            \item $\langle d,b,c,g,f,d \rangle$ with a length of 5.
+            \item $\langle c,g,f,e,c \rangle$
+            \item $\langle d,b,c,g,f,d \rangle$
+            \item $\langle d,b,c,f \rangle$
         \end{enumerate}
     
     \paragraph{4.5.1}
         \begin{enumerate}
-            \item 
+            \item No
+            \item Yes $\langle b,c,f,e \rangle$
+            \item No
+            \addtocounter{enumi}{1}
+            \item Yes $\langle b,c,d,b \rangle$
         \end{enumerate}
     
     \paragraph{4.5.2}
         \begin{enumerate}
-            \item 
+            \item \includegraphics[scale=.7]{452a1}
+                  \includegraphics[scale=.7]{452a2}
+                  \includegraphics[scale=.7]{452a3}
+                  \includegraphics[scale=.7]{452a4}
         \end{enumerate}
     
     \paragraph{4.5.3}
         \begin{enumerate}
-            \item 
+            \item \includegraphics[scale=.7]{453a}
+            \item \includegraphics[scale=.7]{453b}
         \end{enumerate}
     
     \paragraph{4.6.1}
         \begin{enumerate}
             \item 
+                \begin{align*}
+                    A &=   \begin{bmatrix}
+                            0 & 1 & 0 & 0\\
+                            0 & 0 & 1 & 0\\
+                            0 & 0 & 0 & 1\\
+                            0 & 1 & 0 & 0
+                           \end{bmatrix} \\                  
+                    A^2 &= \begin{bmatrix}
+                            0 & 0 & 1 & 0\\
+                            0 & 0 & 0 & 1\\
+                            0 & 1 & 0 & 0\\
+                            0 & 0 & 1 & 0 
+                           \end{bmatrix} \\
+                    A^3 &= \begin{bmatrix}
+                            0 & 0 & 0 & 1\\
+                            0 & 1 & 0 & 0\\
+                            0 & 0 & 1 & 0\\
+                            0 & 0 & 0 & 1
+                           \end{bmatrix} \\
+                    A^4 &= \begin{bmatrix}
+                            0 & 1 & 0 & 0\\
+                            0 & 0 & 1 & 0\\
+                            0 & 0 & 0 & 1\\
+                            0 & 1 & 0 & 0
+                           \end{bmatrix} \\
+                    A^+ &= \begin{bmatrix}
+                            0 & 1 & 1 & 1\\
+                            0 & 1 & 1 & 1\\
+                            0 & 1 & 1 & 1\\
+                            0 & 1 & 1 & 1
+                           \end{bmatrix}
+                \end{align*}
         \end{enumerate}
     
     \paragraph{4.6.2}
         \begin{enumerate}
             \item 
+                $$A =   \begin{bmatrix}
+                        0 & 0 & 0 & 0 & 0 & 1\\
+                        1 & 0 & 0 & 0 & 0 & 0\\
+                        0 & 1 & 0 & 1 & 0 & 0\\
+                        0 & 0 & 1 & 0 & 1 & 0\\
+                        0 & 0 & 0 & 0 & 1 & 1\\
+                        0 & 1 & 0 & 0 & 0 & 0
+                        \end{bmatrix}$$
+            \item
+                $$A^2 = \begin{bmatrix}
+                        0 & 1 & 0 & 0 & 0 & 0\\
+                        0 & 0 & 0 & 0 & 0 & 1\\
+                        1 & 0 & 1 & 0 & 1 & 0\\
+                        0 & 1 & 0 & 1 & 1 & 1\\
+                        0 & 1 & 0 & 0 & 1 & 1\\
+                        1 & 0 & 0 & 0 & 0 & 0
+                        \end{bmatrix}$$
+            \item 2, 4, 5, and 6
         \end{enumerate}
     
     \paragraph{4.7.1}
