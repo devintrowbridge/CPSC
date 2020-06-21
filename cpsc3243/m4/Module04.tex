@@ -444,7 +444,7 @@
     \paragraph{4.12.3}
         \begin{enumerate}
             \item Theorem: For $n\geq2, 3^n>2^n+n^2$
-              \begin{proof}
+              \begin{proof} By induction on n.
                 \item \paragraph{Base Case:} $n=2$
                   \begin{align*}
                     3^{(2)} &> 2^{(2)}+(2)^2 \\
@@ -466,7 +466,7 @@
                   Therfore, $3^{k+1} > 2^{k+1} + (k+1)^2$
               \end{proof}
             \item Theorem: For any $n \geq 4, n! \geq 2^n$
-            \begin{proof}
+            \begin{proof} By induction on n.
               \item \paragraph{Base Case:} $n=4$ 
               \begin{align*}
                 4! &\geq 2^4 \\
@@ -489,11 +489,59 @@
     
     \paragraph{4.13.1}
         \begin{enumerate}
-            \item 
+          \item Theorem: For any positive integer n, 4 evenly divides $3^{2n}-1$.
+          \begin{proof} By induction on n.
+            \item \paragraph{Base Case:} $n=1$
+            If 4 evenly divides $3^{2n}-1$, then $4x = 3^{2n}-1$ for some integer x. Plugging in yields $x = \frac{3^{2(1)}-1}{4} = 2$.  Because $x = 2$, the base case is true.
+            \item \paragraph{Inductive Step:} We will show that for any positive integer k and arbitrary integers y and z, if $4y = 3^{2k}-1$ then 
+              $$4z = 3^{2(k+1)}-1$$
+            The inductive hypothesis is rearranged as follows 
+              $$4y = 3^{2k}-1  \Rightarrow 3^{2k} = 4y+1$$
+            Starting with the right side of the equation:
+            \begin{align*}
+              3^{2(k+1)}-1 &= 3^{2k+2}-1 \\
+              &= 9\cdot3^{2k} - 1 \\
+              &= 9(4y+1) - 1 \tag{inductive hypothesis} \\
+              &= 36y+8 \\
+              &= 4(9y+2)
+            \end{align*}
+            Because y is an integer, $9y+2$ is an integer. Because $3^{2(k+1)}-1$ is equivalent to to 4 times some integer z, where $z=9y+2$, for any positive integer n, 4 evenly divides $3^{2n}-1$.
+          \end{proof}
+          \item Theorem: For any positive integer n, 6 evenly divides $7^{n}-1$.
+          \begin{proof} By induction on n.
+            \item \paragraph{Base Case:} $n=1$
+            If 6 evenly divides $7^{n}-1$, then $6x = 7^{n}-1$ for some integer x. Plugging in yields $x = \frac{7^{1}-1}{6} = 1$.  Because $x = 1$, the base case is true.
+            \item \paragraph{Inductive Step:} We will show that for any positive integer k and arbitrary integers y and z, if $6y = 7^{k}-1$ then 
+              $$6z = 7^{k+1}-1$$
+            The inductive hypothesis is rearranged as follows 
+              $$6y = 7^{k}-1  \Rightarrow 7^{k} = 6y+1$$
+            Starting with the right side of the equation:
+            \begin{align*}
+              7^{k+1}-1 &= 7\cdot7^{k}-1 \\
+              &= 7(6y+1) - 1 \tag{inductive hypothesis} \\
+              &= 42y+6 \\
+              &= 6(7y+1)
+            \end{align*}
+            Because y is an integer, $7y+1$ is an integer. Because $7^{k+1}-1$ is equivalent to to 6 times some integer z, where $z=7y+1$, for any positive integer n, 6 evenly divides $7^{n}-1$.
+          \end{proof}
         \end{enumerate}
     
     \paragraph{4.13.3}
         \begin{enumerate}
-            \item 
+          \item Theorem: For $n\geq0, c_n = 5^{2^n}$, where the sequence $\{c_n\}$ is defined as $c_0=5$ and $c_n = (c_{n-1})^2$ for $n\geq1$.
+            \begin{proof} By induction on n.
+              \item \paragraph{Base Case:} Plugging the base case $n=0$ into the equation to be proven yields $c_0 = 5^{2^0} = 5$ which is equivalent to the sequence definition. Therefore the base case is true.
+
+              \item \paragraph{Inductive Step:} We will show that for any $k\geq0$, if $c_k = 5^{2^k}$ then 
+                $$c_{k+1} = 5^{2^{k+1}}$$
+              For any integer $k\geq0$:
+              \begin{align*}
+                c_{k+1} &= (c_{k})^2  \tag{sequence definition} \\
+                &= (5^{2^k})^2        \tag{inductive hypothesis} \\
+                &= 5^{2\cdot2^k} \\
+                &= 5^{2^{k+1}}
+              \end{align*}
+              Therfore, $c_{k+1} = 5^{2^{k+1}}$
+            \end{proof}
         \end{enumerate}
 \end{document}
