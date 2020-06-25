@@ -34,15 +34,75 @@
 
 \paragraph{5.2.2}
 \begin{enumerate}
-  \item Let $f(x)$ be a function where $x \in B^n$ and $f(x)$ appends $x$ to $x$. For example, if $x = 101$ then $f(101) = 101101$. The inverse of this function would be to remove the last 3 characters. For example, $f^{-1}(101101) = 101$. Since $f^{-1}(f(x)) = x$, $f(x)$ is a bijection.
-  \item
-  \item
+  \item Let $f(x)$ be a function where $x \in B^3$ and $f(x)$ appends the reverse of $x$ to $x$. For example, if $x = 001$ then $f(001) = 001100$. 
+  
+  The inverse of this function would be to let $y$ equal the length of the string divided by two and remove the last $y$ characters from the string. For example, if $f^{-1}(001100)$ then $y=6/2=3$ and $f^{-1}(001100)=001$. 
+  
+  Since $f^{-1}(f(x)) = x$ for every $x \in B^3$, $f(x)$ is a bijection.
+  \item $|P_6| = |B^3| = 2^3 = 8$
+  \item Let $n=4$, for some $x \in B^4$ let $y$ be a string that is constructed by removing the last bit of $x$ and reversing it. $f(x)$ then is given by appending $y$ to $x$. 
+  
+  For example: if $x = 0010$ then $y =100$ and $f(x) = 0010100$ 
+  
+  The inverse of this function is given by removing the last $n-1 = 3$ bits from the string. 
+  
+  For example: $f^{-1}(0010100) = 0010$.
+  
+  Since $f^{-1}(f(x)) = x$ for every $x \in B^4$, $f(x)$ is a bijection.
+  
+  Therfore, $|P_7| = |B^4| = 2^4 = 16$
 \end{enumerate}
 
 \paragraph{5.2.3}
 \begin{enumerate}
-  \item 
-  \item
+  \item Let $x \in B^9$ and the function $f(x):B^9 \rightarrow E_{10}$. Let $f(x)$ be a function such that if there are an odd number of 1's in $x$ then 1 is prepended to $x$ and if there are an even number of 1's in $x$ then 0 is prepended to $x$.
+  
+  For example: if $x = 0 0111 1010$ then $f(x) =1x= 10 0111 1010$.
+  
+  The inverse of this function is given by removing the first digit from the string.
+  
+  For example: $f^{-1}(10 0111 1010) = 0 0111 1010$
+  
+  Since $f^{-1}(f(x)) = x$ for every $x \in B^9$, $f(x)$ is a bijection.
+  \item $|E_{10}| = |B^9| = 2^9 = 512$
 \end{enumerate}
+
+\paragraph{5.3.1}
+\begin{enumerate}
+  \item $Digits + Letters + Specials = 10 + 26 + 4 = 40$
+        
+  Number of passwords $= 40 \cdot 39 \cdot 38 \cdot 37 \cdot 36 \cdot 35 = 2,763,633,600$
+  \item Number of passwords $= 36 \cdot 39 \cdot 38 \cdot 37 \cdot 36 \cdot 35 = 2,487,270,240$
+\end{enumerate}
+
+\paragraph{5.3.2}
+\begin{enumerate}
+  \item $3 \cdot 2^9 = 1,536$
+\end{enumerate}
+
+\paragraph{5.3.4}
+\begin{enumerate}
+  \item Working in reverse order, assign devs to projects 3, 2, and then 1.
+  
+  $7 \cdot 3 \cdot (6+2) = 168$
+\end{enumerate}
+
+\paragraph{5.4.1}
+\begin{enumerate}
+  \item A function must map each $x \in \{0,1\}^7$ to an element in the target $\{0,1\}^7$. There are $|2^7|$ elements in the domain, and $2^7$ elements in the target. Because this function is not one-to-one or onto, the only requirement is that each $x$ has one and only one $f(x)$. This implies that each of the $2^7$ $x$'s has $2^7$ potential $f(x)$'s. Therfore the number of different functions $f:\{0,1\}^7 \rightarrow \{0,1\}^7$ is 
+  
+    $$ \left(2^7 \right)^{2^7} = 2^{7 \cdot 2^7}$$
+    
+  \item Because $f:\{0,1\}^7 \rightarrow \{0,1\}^7$ is one-to-one, the function must map each $x \in \{0,1\}^7$ to a unique element in the target $\{0,1\}^7$. In other words, for the first element in the domain there are $2^7$ possible $f(x)$'s, for the second element there are $2^7 -1$ possible $f(x)$'s, and so on. Therefore the number of functions can be determined by counting permutations 
+  
+    $$ P(2^7,2^7) = (2^7)! = 3.86e215$$
+\end{enumerate}
+
+\paragraph{5.4.3}
+\begin{enumerate}
+  \item $10! = 3,628,800$
+  \item If the groom must be to the immediate left of the bride, you can combine them into one ``person'', i.e. [groom, bride]. Thus there are $9! = 362,880$ different ways to arrange the line up.
+\end{enumerate}
+
 
 \end{document}
