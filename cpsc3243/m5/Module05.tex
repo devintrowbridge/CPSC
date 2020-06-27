@@ -1,7 +1,10 @@
 \documentclass[11pt, letterpaper, twocolumn, fleqn]{article}
 \usepackage[margin=0.5in]{geometry}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb,amsthm,graphicx}
+\usepackage{amsmath,amssymb,amsthm,graphicx, textcomp}
+
+
+
 \graphicspath{ {./images/} }
 
 \let\oldemptyset\emptyset
@@ -11,6 +14,9 @@
 \renewcommand{\labelenumi}{\alph{enumi}.}
 \renewcommand{\labelenumii}{(\arabic{enumii})}
 \renewcommand{\qedsymbol}{$\blacksquare$}
+
+\widowpenalties 1 10000
+\raggedbottom
 
 \paragraph{5.1.1}
 \begin{enumerate}
@@ -190,9 +196,88 @@
 
 \paragraph{5.8.4}
 \begin{enumerate}
-  \item The first kid has the option to pick anywhere between 0 and 20 comic books. Let $x_1$ be the number of comic books the first kid picks, $x_2$ is the number the second picks, and so on. Then there are 
-    $$ \frac{20!}{x_1!x_2!x_3!x_4!x_5!} $$
-  Ways to distribute the comic books. Where $x_n \leq 20 - x_1...-x_{n-1}$ for $1 < n \leq 4$ and $x_5 = 20-x_1-x_2-x_3-x_4$.
+  \item Let the 20 distinct comic books be represented by a string of length 20, where each position represents a unique comic book. Each position can be filled with the number of the kid that will receive the book, e.g. a 1 in position 3 means the 3rd book goes to kid 1. Since there are 5 possible choices for each position, then the number of ways to distribute the books becomes
+    $$5 \cdot 5 \cdot 5 \cdot ... = 5^{20}$$
 \end{enumerate}
 
+\paragraph{5.9.2}
+\begin{enumerate}
+  \item $\binom{15+6-1}{6-1} = \frac{20!}{5!(20-5)!}$ ways to select 15 cookies from 6 varieties.
+  \item Take the 3 chocolate chip cookies out of the total, $15-3=12$. Then $\binom{12+6-1}{6-1} = \frac{17!}{5!(17-5)!}$
+  \item If at least 3 sugar cookies is $\binom{17}{5}$ then by complement at most 2 sugar cookies is $\binom{20}{5} - \binom{17}{5} = \frac{20!}{5!(20-5)!} - \frac{17!}{5!(17-5)!}$
+\end{enumerate}
+
+\paragraph{5.9.4}
+\begin{enumerate}
+  \item There are $\binom{25+4-1}{4-1} = \frac{28!}{3!(28-3)!}$ ways to select 25 coins from the piles.
+  \item If 5 of the coins must be quarters, then select these 5 at the start $25-5 = 20$. Then there are $\binom{20+4-1}{4-1} = \frac{23!}{3!(23-3)!}$ ways to select the coins.
+\end{enumerate}
+
+\paragraph{5.9.5}
+\begin{enumerate}
+  \item There are $\binom{50-8+1}{8-1} = \frac{57!}{7!(57-7)!}$ ways to place the order.
+  \item 3 of each variety gives $3 \cdot 8 = 24$ cases to take out of the total, $50-24 = 26$. Then there are $\binom{26+8-1}{8-1} = \frac{33!}{7!(33-7)!}$ ways to place the order.
+\end{enumerate}
+
+\paragraph{5.10.1}
+\begin{enumerate}
+  \item Assuming the intent is to evenlt distribute the exams across the TAs, each TA gets the same number of indistinguishable exams. Because each TA must gets 20 exams, there is only one way to distribute the exams.
+  \item Because the exams are distinguishable now, there are 
+    $$\frac{n!}{((n/m)!)^m} = \frac{60!}{(20!)^3}$$
+  ways to distribute the exams.
+  \item The exams are still distinguishable, but the TAs choose different amounts from the pool. Therefore we must use the more general form:
+    $$\binom{60}{25} \cdot \binom{35}{20} \cdot \binom{15}{15} $$
+    $$ = \frac{60!}{25!20!15!}$$
+\end{enumerate}
+
+\paragraph{5.10.5}
+\begin{enumerate}
+  \item The board members can be represented by balls, and the lunches by bins. Since it is not important who gets what lunch, the board members are indistinguishable. Since there are no restrictions on who gets what lunch, then the number of different ways to order lunch is 
+    $$\binom{10+25-1}{25-1} = \frac{34!}{24}$$
+  \item To ensure that all lunches are different then there can be at most one board member per lunch (i.e. one ball per bin). Therefore
+    $$\binom{25}{10} = \frac{25!}{10!(25-10)!}$$
+\end{enumerate}
+
+\paragraph{5.12.1}
+\begin{enumerate}
+  \item The crates are indistinguishable and there are no restrictions. Therefore there are 
+    $$\binom{50+8-1}{8-1} = \frac{57!}{7!}$$
+  different ways to place the order.
+  \item The number of ways that the manager can purchase 50 crates with at most 20 chosen of any varieties is $\binom{57}{7}$ minus the number of ways to purchase soda with at least 21 of some variety chosen.
+  
+  The number of ways to purchase soda with at least 21 of a single variety is 
+  $$50-21 = 29 \Rightarrow \binom{29+8-1}{8-1} = \frac{36!}{7!(36-7)!}$$
+  
+  This set is not disjunct with the number of ways to purchase the other varieties of soda with at least 21 of that variety. To find the intersection we take the number of possibilities for the first variety,  $50-21 = 29$ possibilities, and multiply it by the number of possibilities where there is another variety with at least 21 from the other set of 7 varieties.
+    $$29 \cdot \binom{29+7-1}{7-1} = 29 \cdot \frac{35!}{6!29!}$$
+  Doing this for the 8 varieties gives 
+    $$8 \cdot (29 \cdot \frac{35!}{6!29!})$$
+  And subtracting from the total number of ways to purchase the 50 crates gives the complement. Therefore there are
+    $$\frac{57!}{7!}- 8 \cdot (29 \cdot \frac{35!}{6!29!})$$
+  different ways to order the crates.
+\end{enumerate}
+
+\paragraph{5.12.2}
+\begin{enumerate}
+  \item Let there be a group of 25 indistinguishable balls and 6 bins, labeled $x_1, ... x_6$. Since there are no restrictions, we use the form:
+    $$\binom{25+6-1}{6-1} = \frac{30!}{5!(30-5)!}$$
+  Therefore there are $\frac{30!}{5!25!}$ different solutions to to the equation $x_1+x_2+x_3+x_4+x_5+x_6=25$.
+  \item Since each $x_i \geq 3$, then we can take 3 balls per $x$ and place them in each bin before we start. Removing these from the pile gives $25-3*6=7$.  Therefore, there are 
+    $$\binom{7+6-1}{6-1} = \frac{12!}{5!}$$
+  possible solutions to the equation where $x_i \geq 3$ for each $x$.
+\end{enumerate}
+
+\paragraph{5.12.4}
+\begin{enumerate}
+  \item The sum total number of players from both teams is $20+18=38$ then we want to select 12 indistinguishable players from this set of 38. Therefore there are
+    $$\binom{38}{12} = \frac{38!}{12!(38-12)!}$$
+  Different ways to select the 12 from the two soccer teams.
+  \item In order to select the same number of players from each team, we do the same operation, but selecting 6 players from each team and then taking the product. Therefore there are
+    $$\binom{20}{6} \cdot \binom{18}{6}$$
+    $$\frac{20!}{6!(20-6)!} \cdot \frac{18!}{6!(18-6)!}$$
+  different ways to select the players so that the new team has the same number of players from each of the old teams.
+\end{enumerate}
+
+\paragraph{5.13.1}
+\paragraph{5.13.2}
 \end{document}
