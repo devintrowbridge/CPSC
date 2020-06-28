@@ -17,6 +17,7 @@
 
 \widowpenalties 1 10000
 \raggedbottom
+\pagestyle{headings}
 
 \paragraph{5.1.1}
 \begin{enumerate}
@@ -129,11 +130,11 @@
   \item $\binom{52}{5} = \frac{52!}{5!(52-5)!} = \frac{52!}{5!47!} = \frac{52 \cdot 51 \cdot 50 \cdot 49 \cdot 48}{5!} = 2,598,960$
   \item There are 4 suits that evenly divide the deck so there are $52/4 = 13$ hearts. From this subset of 13, choose 2 cards $\binom{13}{2}$. Subtract these two from the deck and pick the other 3 cards $\binom{50}{3}$. Combined together yields 
   
-    $$\binom{13}{2} \cdot \binom{50}{3} = \frac{13!}{2!(11-2)!} \cdot \frac{50!}{3!(50-3)!}$$
+    $$\binom{13}{2} \cdot \binom{50}{3} = \frac{13!}{2!(11-2)!} \cdot \frac{50!}{3!(50-3)!} = 1,528,800$$
     
   \item Since each suit has 13 cards there are 26 total hearts and diamonds. From this subset of 26, choose 5 cards 
   
-    $$\binom{26}{5} = \frac{26!}{5!(26-5)!}$$
+    $$\binom{26}{5} = \frac{26!}{5!(26-5)!} = 65,780$$
     
   \item Each rank exists 4 times in the deck, 1 time for each suit. Picking the first card determines the suit and rank of the next 3, which leaves one other card to pick from the remaining 48 cards.
     \begin{align*}
@@ -145,14 +146,14 @@
 
 \paragraph{5.6.1}
 \begin{enumerate}
-  \item Since the teacher selected an unordered set of 4 students to work together, there are $\binom{37}{4} = \frac{37!}{4!(37-4)!}$ ways to select the students.
-  \item Since the students consume a job as they are picked, students form a permutation. Therefore there are $P(37,4) = \frac{37!}{(37-4)!}$ ways to select the students and assign jobs.
+  \item Since the teacher selected an unordered set of 4 students to work together, there are $\binom{37}{4} = \frac{37!}{4!(37-4)!}=66,045$ ways to select the students.
+  \item Since the students consume a job as they are picked, students form a permutation. Therefore there are $P(37,4) = \frac{37!}{(37-4)!} = 1,585,080$ ways to select the students and assign jobs.
 \end{enumerate}
 
 \paragraph{5.6.2}
 \begin{enumerate}
   \item Since the 30 selected pianists are not ranked or ordered in any way, there are $\binom{120}{30} = \frac{120!}{30!(120-30)!}$ outcomes for the first round.
-  \item Since the winners of the second round consume a place as they are selected, the pianists form a permutation. Therfore there are $P(30,5) = \frac{30!}{(30-5)!}$ outcomes for the second round.
+  \item Since the winners of the second round consume a place as they are selected, the pianists form a permutation. Therfore there are $P(30,5) = \frac{30!}{(30-5)!}=17,100,720$ outcomes for the second round.
 \end{enumerate}
 
 \paragraph{5.6.6}
@@ -160,7 +161,7 @@
   \item We must choose 5 from each party in no particular order. So there are $\binom{44}{5}$ possible choices for Demonstrators and $\binom{56}{5}$ possible choices for Repudiators. Combined together gives 
     \begin{align*}
       \binom{44}{5} &\cdot \binom{56}{5} \\
-      \frac{44!}{5!(44-5)!} &\cdot \frac{56!}{5!(56-5)!} \\
+      \frac{44!}{5!(44-5)!} &\cdot \frac{56!}{5!(56-5)!} = 4.15\cdot10^{12}
     \end{align*}
 \end{enumerate}
 
@@ -168,17 +169,18 @@
 \begin{enumerate}
   \item There are $\binom{52}{5}$ possible 5-card hands. Removing the 13 clubs from the deck, there are $\binom{39}{5}$ possible 5 card hands without a club. Therefore there are 
     $$\binom{52}{5} - \binom{39}{5} = \frac{52!}{5!(52-5)!} - \frac{39!}{5!(39-5)!}$$
-  possible 5-hand cards with at least one club.
+  2,023,203 possible 5-hand cards with at least one club.
   \item There are 13 unique ranks in a deck. From this subset of 13, pick 5 ranks for a total of $\binom{13}{5}$ different 5-card hands that has no two cards of the same rank. Subtracting this from the total number of 5 card hands gives
-    $$\binom{52}{5} - \binom{13}{5} = \frac{52!}{5!(52-5)!} - \frac{13!}{5!(13-5)!}$$
+    $$\binom{52}{5} - \binom{13}{5} $$
+    $$= \frac{52!}{5!(52-5)!} - \frac{13!}{5!(13-5)!} = 2,597,673$$
 \end{enumerate}
 
 \paragraph{5.8.1}
 \begin{enumerate}
   \item 6 total letters, no characters repeat so there are $6! = 720$ total permutations of NUMBER.
   \item DISCRETE has 8 total letters. E is the only repeated character, and it is in the string 2 times. Therefore there are 
-    $$\binom{8}{1}\cdot\binom{7}{1}\cdot\binom{6}{1}\cdot\binom{5}{1}\cdot\binom{4}{1}\binom{3}{2}\cdot\binom{1}{1} $$
-    $$= \frac{8!}{2!1!1!1!1!1!1!0!} = \frac{8!}{2!}$$
+    $$\binom{8}{1}\cdot\binom{7}{1}\cdot\binom{6}{1}\cdot\binom{5}{1}\cdot\binom{4}{1} \cdot \binom{3}{2}\cdot\binom{1}{1} $$
+    $$= \frac{8!}{2!1!1!1!1!1!1!0!} = \frac{8!}{2!} = 20,160$$
   ways to permute the letters in DISCRETE.
 \end{enumerate}
 
@@ -186,98 +188,141 @@
 \begin{enumerate}
   \item From the deck, choose 13 cards to give to a player, and repeat for each of the 4 players. Therefore there are 
     $$\binom{52}{13} \cdot \binom{39}{13} \cdot \binom{26}{13} \cdot \binom{13}{13}$$
-    $$= \frac{52!}{13!13!13!13!}$$
+    $$= \frac{52!}{13!13!13!13!} = 1.03\cdot10^{27}$$
   different ways to deal four players exactly 13 cards.
   \item From the deck, choose 7 cards to give to a player, and repeat for each of the 4 players, leaving the remain cards in the deck. Therefore there are 
     $$\binom{52}{7} \cdot \binom{45}{7} \cdot \binom{38}{7} \cdot \binom{31}{7}$$
-    $$= \frac{52!}{7!7!7!7!}$$
+    $$= \frac{52!}{7!7!7!7!} = 2.40\cdot10^{51} $$
   different ways to deal four players 7 cards and leave the rest in the deck.
 \end{enumerate}
 
 \paragraph{5.8.4}
 \begin{enumerate}
   \item Let the 20 distinct comic books be represented by a string of length 20, where each position represents a unique comic book. Each position can be filled with the number of the kid that will receive the book, e.g. a 1 in position 3 means the 3rd book goes to kid 1. Since there are 5 possible choices for each position, then the number of ways to distribute the books becomes
-    $$5 \cdot 5 \cdot 5 \cdot ... = 5^{20}$$
+    $$5 \cdot 5 \cdot 5 \cdot ... = 5^{20} = 9.54\cdot10^{13}$$
 \end{enumerate}
 
 \paragraph{5.9.2}
 \begin{enumerate}
-  \item $\binom{15+6-1}{6-1} = \frac{20!}{5!(20-5)!}$ ways to select 15 cookies from 6 varieties.
-  \item Take the 3 chocolate chip cookies out of the total, $15-3=12$. Then $\binom{12+6-1}{6-1} = \frac{17!}{5!(17-5)!}$
-  \item If at least 3 sugar cookies is $\binom{17}{5}$ then by complement at most 2 sugar cookies is $\binom{20}{5} - \binom{17}{5} = \frac{20!}{5!(20-5)!} - \frac{17!}{5!(17-5)!}$
+  \item $\binom{15+6-1}{6-1} = \frac{20!}{5!(20-5)!} = 15,504$ ways to select 15 cookies from 6 varieties.
+  \item Take the 3 chocolate chip cookies out of the total, $15-3=12$. Then $\binom{12+6-1}{6-1} = \frac{17!}{5!(17-5)!} = 6,188$
+  \item If at least 3 sugar cookies is $\binom{17}{5}$ then by complement at most 2 sugar cookies is 
+    $$\binom{20}{5} - \binom{17}{5} = \frac{20!}{5!(20-5)!} - \frac{17!}{5!(17-5)!} = 9,316$$
 \end{enumerate}
 
 \paragraph{5.9.4}
 \begin{enumerate}
-  \item There are $\binom{25+4-1}{4-1} = \frac{28!}{3!(28-3)!}$ ways to select 25 coins from the piles.
-  \item If 5 of the coins must be quarters, then select these 5 at the start $25-5 = 20$. Then there are $\binom{20+4-1}{4-1} = \frac{23!}{3!(23-3)!}$ ways to select the coins.
+  \item There are 
+    $$\binom{25+4-1}{4-1} = \frac{28!}{3!(28-3)!} = 3,276$$
+  ways to select 25 coins from the piles.
+  \item If 5 of the coins must be quarters, then select these 5 at the start $25-5 = 20$. Then there are 
+    $$\binom{20+4-1}{4-1} = \frac{23!}{3!(23-3)!} = 1,771$$
+  ways to select the coins.
 \end{enumerate}
 
 \paragraph{5.9.5}
 \begin{enumerate}
-  \item There are $\binom{50-8+1}{8-1} = \frac{57!}{7!(57-7)!}$ ways to place the order.
-  \item 3 of each variety gives $3 \cdot 8 = 24$ cases to take out of the total, $50-24 = 26$. Then there are $\binom{26+8-1}{8-1} = \frac{33!}{7!(33-7)!}$ ways to place the order.
+  \item There are 
+    $$\binom{50-8+1}{8-1} = \frac{57!}{7!(57-7)!} = 264,385,836$$
+  ways to place the order.
+  \item 3 of each variety gives $3 \cdot 8 = 24$ cases to take out of the total, $50-24 = 26$. Then there are 
+    $$\binom{26+8-1}{8-1} = \frac{33!}{7!(33-7)!} = 4,272,048$$
+  ways to place the order.
 \end{enumerate}
 
 \paragraph{5.10.1}
 \begin{enumerate}
   \item Assuming the intent is to evenlt distribute the exams across the TAs, each TA gets the same number of indistinguishable exams. Because each TA must gets 20 exams, there is only one way to distribute the exams.
   \item Because the exams are distinguishable now, there are 
-    $$\frac{n!}{((n/m)!)^m} = \frac{60!}{(20!)^3}$$
+    $$\frac{n!}{((n/m)!)^m} = \frac{60!}{(20!)^3} = 5.78\cdot10^{26}$$
   ways to distribute the exams.
   \item The exams are still distinguishable, but the TAs choose different amounts from the pool. Therefore we must use the more general form:
     $$\binom{60}{25} \cdot \binom{35}{20} \cdot \binom{15}{15} $$
-    $$ = \frac{60!}{25!20!15!}$$
+    $$ = \frac{60!}{25!20!15!} = 1.69\cdot10^{26}$$
 \end{enumerate}
 
 \paragraph{5.10.5}
 \begin{enumerate}
   \item The board members can be represented by balls, and the lunches by bins. Since it is not important who gets what lunch, the board members are indistinguishable. Since there are no restrictions on who gets what lunch, then the number of different ways to order lunch is 
-    $$\binom{10+25-1}{25-1} = \frac{34!}{24}$$
+    $$\binom{10+25-1}{25-1} = \frac{34!}{24!(34-24)!} = 131,128,140$$
   \item To ensure that all lunches are different then there can be at most one board member per lunch (i.e. one ball per bin). Therefore
-    $$\binom{25}{10} = \frac{25!}{10!(25-10)!}$$
+    $$\binom{25}{10} = \frac{25!}{10!(25-10)!} = 3,268,760$$
 \end{enumerate}
 
 \paragraph{5.12.1}
 \begin{enumerate}
   \item The crates are indistinguishable and there are no restrictions. Therefore there are 
-    $$\binom{50+8-1}{8-1} = \frac{57!}{7!}$$
+    $$\binom{50+8-1}{8-1} = \frac{57!}{7!} = 8.04\cdot10^{72}$$
   different ways to place the order.
   \item The number of ways that the manager can purchase 50 crates with at most 20 chosen of any varieties is $\binom{57}{7}$ minus the number of ways to purchase soda with at least 21 of some variety chosen.
   
+  Let $V_i$ be the set of ways to choose 50 crates of soda from 8 varieties with at least 21 chosen from the $i^{th}$ variety, this can be expressed as 
+    $$|V_1 \cup V_2 \cup V_3 \cup V_4 \cup V_5 \cup V_6 \cup V_7 \cup V_8 |$$
+    
   The number of ways to purchase soda with at least 21 of a single variety is 
-  $$50-21 = 29 \Rightarrow \binom{29+8-1}{8-1} = \frac{36!}{7!(36-7)!}$$
+    $$50-21 = 29 \Rightarrow \binom{29+8-1}{8-1} = \frac{36!}{7!29!}$$
   
-  This set is not disjunct with the number of ways to purchase the other varieties of soda with at least 21 of that variety. To find the intersection we take the number of possibilities for the first variety,  $50-21 = 29$ possibilities, and multiply it by the number of possibilities where there is another variety with at least 21 from the other set of 7 varieties.
-    $$29 \cdot \binom{29+7-1}{7-1} = 29 \cdot \frac{35!}{6!29!}$$
-  Doing this for the 8 varieties gives 
-    $$8 \cdot (29 \cdot \frac{35!}{6!29!})$$
-  And subtracting from the total number of ways to purchase the 50 crates gives the complement. Therefore there are
-    $$\frac{57!}{7!}- 8 \cdot (29 \cdot \frac{35!}{6!29!})$$
-  different ways to order the crates.
+  The intersection of two $V$s is not zero since the manager could order two varieties with 21 crates and still have 8 crates left to choose. The number of ways there can be 21 or more of two varieties becomes 
+    $$|V_i \cap V_j| = \binom{8+8-1}{8-1} = \frac{15!}{7!8!}$$
+  
+  The intersection of 3 or more $V$s is zero since a 3rd variety of 21 crates would be net over 50 crates. Therefore the number of ways to purchase soda with at least 21 of a single variety chosen becomes:
+  \begin{align*}
+    |V_1 \cup &V_2 \cup... \cup V_8 | =        \\
+              &|V_1| + |V_2| + ... +|V_8|   \\
+              - &|V_1 \cap V_2| - |V_1 \cap V_3|- ... -|V_7 \cap V_8|
+  \end{align*}
+  Every $V_i = \binom{36}{7}$ and every $|V_i \cap V_j| = \binom{15}{7}$. There are 8 $V_i$ terms and $7+6+5+4+3+2+1 = 28 $ $|V_i \cap V_j|$ terms. Therefore the equation above becomes:
+    $$|V_1 \cup V_2 \cup... \cup V_8 | = 8 \cdot \binom{36}{7} - 28 \cdot \binom{15}{7} $$
+  
+  Then the number of ways that the manager can purchase 50 crates with at most 20 chosen of any varieties becomes:
+    $$\binom{57}{7} - \left(8 \cdot \binom{36}{7} - 28 \cdot \binom{15}{7} \right)$$
+    $$\frac{57!}{7!50!} - \left(8 \cdot \frac{36!}{7!29!} - 28 \cdot \frac{15!}{7!8!} \right)$$
+    $$197,784,576$$
+  
 \end{enumerate}
 
 \paragraph{5.12.2}
 \begin{enumerate}
   \item Let there be a group of 25 indistinguishable balls and 6 bins, labeled $x_1, ... x_6$. Since there are no restrictions, we use the form:
-    $$\binom{25+6-1}{6-1} = \frac{30!}{5!(30-5)!}$$
-  Therefore there are $\frac{30!}{5!25!}$ different solutions to to the equation $x_1+x_2+x_3+x_4+x_5+x_6=25$.
+    $$\binom{25+6-1}{6-1} = \frac{30!}{5!(30-5)!} = 142,506$$
+  Therefore there are $142,506$ different solutions to to the equation $x_1+x_2+x_3+x_4+x_5+x_6=25$.
   \item Since each $x_i \geq 3$, then we can take 3 balls per $x$ and place them in each bin before we start. Removing these from the pile gives $25-3*6=7$.  Therefore, there are 
-    $$\binom{7+6-1}{6-1} = \frac{12!}{5!}$$
+    $$\binom{7+6-1}{6-1} = \frac{12!}{5!7!} = 792$$
   possible solutions to the equation where $x_i \geq 3$ for each $x$.
 \end{enumerate}
 
 \paragraph{5.12.4}
 \begin{enumerate}
   \item The sum total number of players from both teams is $20+18=38$ then we want to select 12 indistinguishable players from this set of 38. Therefore there are
-    $$\binom{38}{12} = \frac{38!}{12!(38-12)!}$$
-  Different ways to select the 12 from the two soccer teams.
+    $$\binom{38}{12} = \frac{38!}{12!(38-12)!} = 2,707,475,148$$
+  different ways to select the 12 from the two soccer teams.
   \item In order to select the same number of players from each team, we do the same operation, but selecting 6 players from each team and then taking the product. Therefore there are
     $$\binom{20}{6} \cdot \binom{18}{6}$$
     $$\frac{20!}{6!(20-6)!} \cdot \frac{18!}{6!(18-6)!}$$
+    $$719,540,640$$
   different ways to select the players so that the new team has the same number of players from each of the old teams.
 \end{enumerate}
 
 \paragraph{5.13.1}
+\begin{enumerate}
+  \item
+  \begin{align*}
+    \binom{7}{3} \cdot (-3)^3 \cdot (4)^4 &= \frac{7!}{3!4!} \cdot -27 \cdot 256  \\
+      &= 7 \cdot 5 \cdot 6912 \\
+      &= 241,920
+  \end{align*}
+  \item
+  \begin{align*}
+    \binom{9}{2} \cdot (5)^2 \cdot (1)^7 &= \frac{9!}{2!7!} \cdot 25 \cdot 1  \\
+      &= \frac{9 \cdot 8}{2} \cdot 25 \\
+      &= 900
+  \end{align*}
+\end{enumerate}
+
 \paragraph{5.13.2}
+\begin{enumerate}
+  \item $(3x-y)^n$
+  \item $(2x+y)^n$
+\end{enumerate}
+
 \end{document}
