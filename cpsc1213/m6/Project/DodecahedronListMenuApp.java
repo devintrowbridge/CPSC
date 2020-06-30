@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
  * @author Devin Trowbridge CPSC-1213-AO1
  * @version 2020-06-21
  */
-public class DodecahedronListApp {
+public class DodecahedronListMenuApp {
    
   /**
     * Scans a provided plain text file for dodecahedron data and prints a 
