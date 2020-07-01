@@ -1,0 +1,104 @@
+\documentclass[11pt, letterpaper, twocolumn, fleqn]{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,graphicx, textcomp}
+
+\graphicspath{ {./images/} }
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\begin{document}
+\renewcommand{\labelenumi}{\alph{enumi}.}
+\renewcommand{\labelenumii}{(\arabic{enumii})}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\widowpenalties 1 10000
+\raggedbottom
+\pagestyle{headings}
+
+\paragraph{6.1.1}
+\begin{enumerate}
+  \item \{HTTH, HHTH, HTHH, HHHH\}
+  \item \{HHHH, HHHT, HHTH, HTHH, THHH, HHTT, THHT, TTHH\}
+  \item \{THHH, TTHH, THHT\}
+\end{enumerate}
+
+\paragraph{6.1.2}
+\begin{enumerate}
+  \item The number of ways the kids can line up is $n!$. If Celia is first, we pick the first position and finish picking the kids in line. So the number of ways Celia can come first is $1 \cdot (n-1)!$. The probability that Celia comes first is 
+    $$\frac{(n-1)!}{n!}$$
+  
+  \item If Celia is first and Felicity is last, then two positions out of $n$ are fixed. Therefore the cardinality of the event is $|E|=(n-2)!$. Then the probability becomes
+    $$\frac{(n-2)!}{n!}$$
+    
+  \item First we decide if Celia is to the left or right of Felicity, which gives 2 choices. Then we count the combinations of $n-2$ kids and the Felicity/Celia pair: $2 \cdot (n-2)!$. The probability the two stand next to each other is:
+    $$\frac{2(n-2)!}{n!}$$
+\end{enumerate}
+
+\paragraph{6.1.4}
+\begin{enumerate}
+  \item The size of the sample space is $\binom{10}{5} = 252$
+  \item Place Alex and Jose on a team together and pick the rest of the kids for that team. Multiply by two to get the probability for team A and B.
+    $$2 \cdot \binom{8}{3} / \binom{10}{5} = \frac{4}{9}$$
+\end{enumerate}
+
+\paragraph{6.1.5}
+\begin{enumerate}
+  \item The number of ways to pick a 5 card hand is $\binom{52}{5}$. There are 13 ways to select the rank of the first 3 cards. After the rank has been determined there are $\binom{4}{3}$ ways to select the 3 cards of that rank from the 4 suits. Then there are $13-1$ ways to select the rank for the pair, and $\binom{4}{2}$ ways to select the suit. All of this combined gives:
+    $$\frac{13\binom{4}{3}(13-1)\binom{4}{2}}{\binom{52}{5}} = \frac{6}{4165}$$
+    
+  \item Picking the rank and suit for the three of a kind card gives $13 \cdot \binom{4}{3}$. There are 12 ranks remaining for the other two cards, picking two from the 12 is $\binom{12}{2}$. Once the ranks are chosen, ther are 4 ways to pick the suit for each. All together gives:
+    $$\frac{13 \binom{4}{3} \binom{12}{2} \cdot 4 \cdot 4}{\binom{52}{5}} = \frac{88}{4165}$$
+\end{enumerate}
+
+\paragraph{6.2.1}
+\begin{enumerate}
+  \item The size of the sample space is $2^n$. If $n-1$ flips come up heads then there are only two possible choices, the outcome where the last flip is heads and the outcome where the last flip is tails. Adding these two probabilities together gives:
+    $$\frac{1}{2^n} + \frac{1}{2^n} = \frac{2}{2^n} = 2^{1-n}$$
+  
+  \item There are two ways for there to be no consecutive flips. To start with heads and alternate flips $n$ times, or to start with tails and alternate flips $n$ times. Adding these together and taking the complement gives the probability that at least two consecutive flips are the same:
+    $$1 - \left(\frac{1}{2^n}+\frac{1}{2^n}\right) = 1 - 2^{1-n}$$
+    
+  \item From $n$ possibilites, pick $n/2$ outcomes for heads, $\binom{n}{n/2}$. This is the number of ways that the number of heads is the same as the number of tails.  Taking the complement gives the number of ways the number of heads is different from the number of tails:
+  \begin{align*}
+    1-\frac{\binom{n}{n/2}}{2^n} &= 1- \frac{n!}{(n/2)!(n-n/2)!} \cdot \frac{1}{2^n}\\
+    &= 1-\frac{n!}{(2^n)(\frac{n}{2}!)^2}
+  \end{align*}
+\end{enumerate}
+
+\paragraph{6.2.2}
+\begin{enumerate}
+  \item The number of ways that the kids can line up is $n!$. The number of ways that a student is first is $(n-1)!$. The cardinality of the intersection of the Events where Celia is first and Felicity is first equals zero, i.e. $|C| \cap |F| = 0$. Therefore the probability that Celia or Felicity is first in line is:
+    $$\frac{(n-1)!}{n!} + \frac{(n-1)!}{n!} = \frac{2(n-1)!}{n!}$$
+    
+  \item The number of ways that Celia is first is $(n-1)!$, the number of ways Felicity is last is $(n-1)!$. The intersection of the two events is not zero for the one case where Celia is first and Felicity is last. Therefore the probability that Celia is first and Felicity is last is:
+    $$\frac{2(n-1)!}{n!} - 1$$
+    
+  \item The probability that Celia and Felicity are next to each other in line is $\frac{2(n-2)!}{n!}$ as shown in \S 6.1.2.c. Therefore the probability that they don't stand next to each other is 
+    $$1 - \frac{2(n-2)!}{n!}$$
+\end{enumerate}
+
+\paragraph{6.2.5}
+\begin{enumerate}
+  \item The cardinality of the union of the 3 sets of characters is $26+26+10 = 62$. The cardinality of the sample space then is $62^{10}$. The cardinality of the events that contain only one of the character sets is $26^{10}$, $26^{10}$, and $10^{10}$. These events are all mutually exclusive.
+  
+  Then there are the events that contain two character sets. They are
+  \begin{align*}
+    |LETTERS \cup numbers| &= 36^{10}\\
+    |letters \cup numbers| &= 36^{10}\\
+    |letters \cup LETTERS| &= 52^{10} 
+  \end{align*}
+  
+  Combining all of these together gives the probability that a randomly selected string is not a valid password. Since the events containing only one of the character sets are not disjoint from the events containg two, we subtract where appropriate. Therefore the number of valid password is:
+  \begin{align*}
+    2&\cdot(36^{10} - 26^{10} - 10^{10}) + (52^{10} - 26^{10} - 26^{10}) \\
+    &+26^{10} + 26^{10} + 10^{10} = 1.52\cdot10^{17}
+  \end{align*}
+  
+  And the probability that a valid password is chosen is:
+    $$\frac{1.52\cdot10^{17}}{62^{10}} = .18$$
+
+\end{enumerate}
+
+\end{document}
