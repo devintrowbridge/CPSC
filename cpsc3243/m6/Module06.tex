@@ -98,7 +98,87 @@
   
   And the probability that a valid password is chosen is:
     $$\frac{1.52\cdot10^{17}}{62^{10}} = .18$$
+\end{enumerate}
 
+\paragraph{6.3.1}
+\begin{enumerate}
+  \item The sum of two even numbers is even, the sum of an even and odd number is odd, and the sum of two odd numbers is even. The cardinality of the event that the sum on the two dice is even is $|\{1,3,5\}^2| + |\{2,4,6\}^2| = 18$. Then the probability is 
+    $$p(A) = \frac{18}{36} = \frac{1}{2}$$
+    
+  The cardinality of the event that the sum of the two dice is at least time is $|\{(5,5),(5,6),(6,5),(6,6)\}| = 4$. Therefore the probability is:
+    $$p(B) = \frac{4}{36} = \frac{1}{9}$$
+    
+  The probability that the red die comes up 5 is:
+    $$p(C) = \frac{6}{36} = \frac{1}{6}$$
+    
+  \item A intersects C for the outcomes where the blue die is odd. Therefore $|A \cap C| = |\{(5,1),(5,3),(5,5)\}| = 3$ The probability of A given C is: 
+    $$p(A|C) = \frac{|A \cap C|}{|C|} = \frac{3}{6} = \frac{1}{2}$$
+    
+  \item B intersects C for the outcomes where the blue die is 5 or 6. Therefore $|B \cap C| = |\{(5,5),(5,6)\}| = 2$. The probability of B given C is:
+    $$p(B|C) = \frac{|B \cap C|}{|C|} = \frac{2}{6} = \frac{1}{3}$$
+    
+  \item A intersects B for the following outcomes: $\{(5,5),(6,6)\}$. Therefore $|A \cap B| = 2$. The probability of A given B is:
+    $$p(A|B) = \frac{|A \cap B|}{|B|} = \frac{2}{4} = \frac{1}{2}$$
+    
+  \item $A$ and $B$ are independent because $p(A) = p(A|B)$. $A$ and $C$ are independent because $p(A) = p(A|C)$. $B$ and $C$ are not independent because $p(B) \neq p(B|C)$
+\end{enumerate}
+
+\paragraph{6.3.3}
+\begin{enumerate}
+  \item The bride can be to the left or the right of the groom. And now there are 7 items to order, 6 people and the bride-groom pair. This gives $2 \cdot 7!$ ways to arrange the party so the bride and groom are together. Divided by the total number of ways to arrange the party gives the probability that they will be next to each other:
+    $$\frac{2\cdot 7!}{8!} = \frac{1}{4}$$
+    
+  \item Placing the maid of honor in the leftmost position gives $(8-1)!$ different ways to arrange the party. Therefore the probability is:
+    $$\frac{7!}{8!} = \frac{1}{8}$$
+    
+  \item The intersection of the two events is when the maid of honor is in the left most position and the bride and groom are next to each other. First we place the maid of honor, and there are 7 positions left to choose. With 7 positions left there are $2 \cdot 6!$ ways to arrange the party so the bride and groom are together and the maid of honor is in the left most position. The probability of this event is:
+    $$\frac{2 \cdot 6!}{8!} = \frac{1}{28}$$
+    
+  Because the product of the probabilities that the bride is next to the groom and the maid of honor is in the leftmost position does not equal the probability of their intersection, the events are not independent.
+    $$\frac{1}{4} \cdot \frac{1}{8} \neq \frac{1}{28}$$
+\end{enumerate}
+
+\paragraph{6.3.6}
+\begin{enumerate}
+  \item $\left(\frac{1}{3}\right)^{10}$
+  \item $\left(\frac{1}{3}\right)^{5} \cdot \left(\frac{2}{3}\right)^{5}$
+\end{enumerate}
+
+\paragraph{6.4.1}
+\begin{enumerate}
+  \item Let F be the event that Sally picked the biased coin. Then $p(F) = .5 = p(\overline{F})$. Let X be the event that 3 flips are heads. The probability that 3 flips are heads given a fair coin is $p(X|\overline{F}) = (.5)^{10}$. The probability that 3 flips are heads given a biased coin is $p(X|F) = (.25)^7 \cdot (.75)^3$. Then the probability that she selected a biased coin is:
+  \begin{align*}
+    p(F|X) &= \frac{p(X|F)p(F)}{p(X|F)p(F) + p(X|\overline{F})p(\overline{F})} \\
+    &= \frac{(.25^7)(.75^3)(.5)}{(.25^7)(.75^3)(.5) + (.5^{10})(.5)} \\
+    &= .026
+  \end{align*}
+\end{enumerate}
+
+\paragraph{6.4.3}
+\begin{enumerate}
+  \item Let T be the event that a player tests positive and D be the event that a player takes drugs. We are trying to find the probability that a player is taking drugs, given they tested positive.
+    $$p(D|T) = \frac{p(T|D)p(D)}{p(T|D)p(D) + p(T|\overline{D})p(\overline{D})} $$
+  
+  The probability that a player is taking drugs is $p(D) = .03$, and the probability that a player is not is $p(\overline{D}) = .97$. The false negative rate is $p(\overline{T}|D) = .04$. The true negative rate by complement is $p(T|D)= .96$. The false positive rate is $p(T|\overline{D}) = .02$. Using this to fill out the equation above gives a probability of
+    $$p(D|T) = \frac{(.96)(.03)}{(.96)(.03)+(.02)(.97)} = .598 $$
+  that the flufferball player is actually taking drugs.
+\end{enumerate}
+
+\paragraph{6.4.4}
+\begin{enumerate}
+  \item Let H be the event that a person has HIV and T be the event that a person tests positive for it. We are trying to find the probability that a person has HIV given they test positive.
+    $$p(H|T) = \frac{p(T|H)p(H)}{p(T|H)p(H) + p(T|\overline{H})p(\overline{H})}$$
+  
+  Summary of probabilities
+  \begin{itemize}
+    \item $p(H) = .0001$ is the probability a person has HIV
+    \item $p(\overline{H}) = .9999$ is the probability a person does not have HIV
+    \item $p(T|\overline{H}) = .025$ is the probability that a person tests positive and doesnt have HIV
+    \item $p(H|\overline{T}) = 0$ is the probability that you have HIV given a negative test
+  \end{itemize} 
+  
+  If the test guarantees a negative means you do not have HIV then  $p(\overline{T}|H)$ must also equal 0 and by complement, $p(T|H) = 1$. Then the equation becomes
+    $$p(H|T) = \frac{(1)(.0001)}{(1)(.0001)+(.025)(.9999)} = .004$$
 \end{enumerate}
 
 \end{document}
