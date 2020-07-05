@@ -296,5 +296,58 @@
 \end{enumerate}
 
 \paragraph{6.8.1}
+\begin{enumerate}
+  \item Using a 1\% defect rate, the probability that 2 out of 100 boards have defects is:
+  \begin{align*}
+    b(2,100,0.01) &= \binom{100}{2}(0.01)^{2}(1-0.01)^{100-2} \\
+      &= \frac{100!}{2!98!}(0.01^2)(0.99^98)\\
+      &= 0.185
+  \end{align*}
+  
+  \item The sample space is $2^{100}$. The size of the event that at least two boards have a defects is $2^{100-2}$, so the probability that at least 2 have defects is:
+    $$\frac{|E|}{|S|} = \frac{2^{98}}{2^{100}} = 0.25$$
+    
+  \item Let K be the random variable denoting the number of boards with defects. Then the expected number of circuit boards with defects out of 100 is:
+    $$E[K] = np =  100 \cdot 0.01 = 1$$
+    
+  \item The sample space is $2^{50}$. The size of the event that at least 2 boards (1 batch) has a defect is $2^{50-1}$ Therefore the probability that at least 2 have defects is:
+    $$\frac{|E|}{|S|} = \frac{2^{49}}{2^{50}} = 0.50$$
+    
+  The expected number of batches with defects out 50 is
+    $$E[K] = np = 50 \cdot 0.01 = 0.5 $$
+    
+  If we have 0.5 defects per 50 batches and 2 boards per batch then that gives, $0.5 \cdot 2 = 1$ expected ciruit board with defects out of 100 boards made. 
+  
+  The expected defect rate is twice as high, but since we're making double the boards, they cancel out and we get the same number of defects per board made.
+\end{enumerate}
+
 \paragraph{6.8.3}
+\begin{enumerate}
+  \item For a fair coin, an incorrect conculsion is reached when the number of heads is less than four. The probability that the number of heads is less than 4 is given by the following:
+  \begin{align*}
+    &b(0,10,0.5) + b(1,10,0.5) + b(2,10,0.5) \\
+    &+ b(3,10,0.5) \\
+    &= \frac{1}{2^{10}} + \binom{10}{1}\cdot0.5^1\cdot0.5^{10-1} \\
+    &+ \binom{10}{2}\cdot0.5^2\cdot0.5^{10-2} + \binom{10}{3}\cdot0.5^3\cdot0.5^{10-3}\\
+    &= 0.000977 + 0.00977 + 0.0439 + 0.117 \\
+    &= .172
+  \end{align*}
+
+  Therefore, the probability that you reach an incorrect conclusion given a fair coin is .172.
+  
+  \item For a biased coin, an incorrect conclusion is reached when the numer of heads is greater than 4. By complement the probability that the number of heads is greater than 4 is given by the following :
+  \begin{align*}
+    &1 - (b(0,10,0.3) + b(1,10,0.3) + b(2,10,0.3) \\
+    &+ b(3,10,0.3)) \\
+    &= 1 - \bigg(\binom{10}{0}\cdot0.3^0\cdot0.7^{10-0} \\
+    &+ \binom{10}{1}\cdot0.3^1\cdot0.7^{10-1} \\ 
+    &+ \binom{10}{2}\cdot0.3^2\cdot0.7^{10-2} \\
+    &+ \binom{10}{3}\cdot0.3^3\cdot0.7^{10-3} \bigg) \\
+    &= 1 - (0.0282 + 0.121 + 0.233 + 0.267) \\
+    &= 1 - .650 = .350
+  \end{align*}
+
+  Therefore, the probability that you reach an incorrect conclusion given a biased coin is .350.
+\end{enumerate}
+
 \end{document}
