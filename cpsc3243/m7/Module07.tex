@@ -1,0 +1,63 @@
+\documentclass[11pt, letterpaper, twocolumn, fleqn]{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,graphicx, textcomp, siunitx}
+
+\graphicspath{ {./images/} }
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
+
+\begin{document}
+\renewcommand{\labelenumi}{\alph{enumi}.}
+\renewcommand{\labelenumii}{(\arabic{enumii})}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\widowpenalties 1 10000
+\raggedbottom
+\pagestyle{headings}
+
+\paragraph{7.1.1}
+\begin{enumerate}
+  \item $G$ has 7 edges so it has a total degree of $2 \cdot 7 = 14$.
+  \item The neighbors of 5 are $\{6,1,2,3,4\}$
+  \item 6's only neighbor is 5, so its degree is 1.
+  \item $\{2,5\}$ is the set of vertices adjacent to 3.
+  \item $G$ is not a regular graph because not all vertices have the same degree, for example: $deg(5) \neq deg(6)$
+  \item Yes, the set $\{1,2,5\}$ form the graph $K_3$ that is a subgraph of $G$.
+  \item No, $K_4$ is not a subgraph of $G$ because there are no 4 vertices that are all connected to each other.
+\end{enumerate}
+
+\paragraph{7.1.4}
+\begin{enumerate}
+  \item There are $3 \cdot 4 = 12$ edges in $K_{3,4}$. $K_{3,4}$ is not a regular graph because the vertices on the left side have 4 neighbors each and the vertices on the right have 3 neighbors each.
+  \item There are 10 edges in $K_5$. $K_5$ is a regular graph because all the vertices have a degree of 4.
+  \item $n=3$ is the largest n such that $K_n = C_n$. 
+\end{enumerate}
+
+\paragraph{7.2.2}
+\begin{enumerate}
+  \item 
+  \begin{align*}
+    &\fbox{1} \rightarrow \fbox{2}\fbox{5} \\
+    &\fbox{2} \rightarrow \fbox{1}\fbox{3}\fbox{5}\\
+    &\fbox{3} \rightarrow \fbox{2}\fbox{5}\\
+    &\fbox{4} \rightarrow \fbox{5}\\
+    &\fbox{5} \rightarrow \fbox{1}\fbox{2}\fbox{3}\fbox{4}\fbox{6}\\
+    &\fbox{6} \rightarrow \fbox{5}
+  \end{align*}
+  \item 
+  $$\begin{bmatrix}
+    0 & 1 & 0 & 0 & 1 & 0 \\
+    1 & 0 & 1 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 0 & 1 & 0 \\
+    1 & 1 & 1 & 1 & 0 & 1 \\
+    0 & 0 & 0 & 0 & 1 & 0
+  \end{bmatrix}$$
+\end{enumerate}
+
+
+\end{document}
