@@ -110,4 +110,56 @@
   \item $\{l,k\}$ are siblings of vertex i.
 \end{enumerate}
 
+\paragraph{7.7.1}
+\begin{enumerate}
+  \item $$\includegraphics[scale=.5]{771a}$$
+  \item $$\includegraphics[scale=.5]{771b}$$
+\end{enumerate}
+
+\paragraph{7.7.2}
+\begin{enumerate}
+  \item ``day'' encodes to 1110 0 1111
+  \item ``candy'' encodes to 1100 0 1101 1110 1111
+  \item 1110 10 1101 decodes to ``den''
+  \item 1110 0 1101 1100 10 decodes to ``dance''
+\end{enumerate}
+
+\paragraph{7.8.1}
+\begin{enumerate}
+  \item If a tree has seven vertices, then it has $7-1 = 6$ edges. Since each edge contributes to the degrees of two vertices, the total degree of a tree with 7 edges will always be $6\cdot2 =12$.
+  
+  \item The cycle $C_6$ is a connected graph with 6 vertices and 6 edges.
+  
+  \item $$\includegraphics{781c}$$
+\end{enumerate}
+
+\paragraph{7.8.2}
+\begin{enumerate}
+  \item To maximize the number of leaves, we must completely fill out a layer of the tree before moving to a higher one. Then the most leaves that a tree can have is $\lceil n/2 \rceil$ for $n > 2$. 
+  
+  Base case: $n=3$. The root gives us 1 vertex, level 0 is filled. With the other two vertices, we fill out level 1, for a total of 2 leaves. 
+    $$\includegraphics{782a1}$$
+    $$\lceil n/2 \rceil = \lceil 3/2 \rceil = 2$$
+  
+  By induction, adding one vertex for a total of 4, level 1 is already filled so we move on to level 2. Adding a child to the leftmost vertex gives 2 leaves still.
+    $$\includegraphics{782a2}$$
+    $$\lceil n/2 \rceil = \lceil 4/2 \rceil = 2$$
+  
+  \item $$\includegraphics{781c}$$
+\end{enumerate}
+
+\paragraph{7.8.5}
+\begin{enumerate}
+  \item Proof. 
+  
+  By definition a Tree is a graph a unique path between every pair of vertices. In other words, a tree is a graph with a minimal amount of edges between vertices. By definition, for a tree with $n$ vertices and $m$ edges, then $m=n-1$. 
+  
+  If $m<n-1$ then one of the unique paths in $G$ has been severed by the removal of 1 or more edges. Since the path was unique, there are no other paths between the two vertices, therefore $G$ is disconnected. \qedsymbol
+\end{enumerate}
+
+\paragraph{7.9.1}
+\begin{enumerate}
+  \item Post order traversal: $(f,i,h,e,b,g,c,a,d)$
+  \item Pre order traversal: $(d,f,b,i,h,e,a,c,g)$
+\end{enumerate}
 \end{document}
