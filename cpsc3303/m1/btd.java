@@ -21,18 +21,30 @@ public class btd
       System.out.print("Enter a binary digit (0 or 1): ");
       String input = in.next();
       char inputChar = input.charAt(0);
-      
-      switch (inputChar)
+      int value = bin2dec(inputChar);
+      if (value == -1) {
+         System.out.println("The character " + inputChar + " is invalid: " + inputChar + " is not a bit.");
+      }
+      else {
+         System.out.println(value);
+      }
+   }
+   
+   public static int bin2dec(char c) {
+      int value = -1;
+      switch (c)
       {
          case '1':
+            value = 1;
             System.out.println(1);
             break;
          case '0':
+            value = 0;
             System.out.println(0);
             break;
          default:
-            System.out.println("The character " + inputChar + " is invalid: " + inputChar + " is not a bit.");
             break;
       }
+      return value;
    }
 }

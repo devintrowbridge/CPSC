@@ -28,14 +28,14 @@ public class dtb
    public static String dec2bin(long input)
    {
       String result = "";
-      if (input == 0)
-      {
+      if (input < 0) {
+         return null;
+      }
+      else if (input == 0) {
          result = "0";
       }
-      else
-      {
-         while (input > 1)
-         {
+      else {
+         while (input > 1) {
             result = (input % 2) + result;
             input = input / 2;
          }

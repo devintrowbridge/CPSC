@@ -21,23 +21,43 @@ public class htd
       System.out.print("Enter a hexadecimal digit (0 thru F): ");
       String input = in.next();
       char inputChar = input.charAt(0);
+      int value = hex2dec(inputChar);
       
-      if (inputChar >= '0' && inputChar <='9')
-      {
-         System.out.println(inputChar - '0');
+      if (value != -1) {
+         System.out.print(value);
       }
-      else if (inputChar >= 'A' && inputChar <= 'F')
+      else
       {
-         System.out.println(inputChar - 'A' + 10);
+         System.out.println("The character " + inputChar + " is invalid: " 
+                            + inputChar + " is not a a hexadecimal digit.");
       }
-      else if (inputChar >= 'a' && inputChar <= 'f')
+            
+   }
+   
+   /**
+    * Converts a hex character to decimal.
+    *
+    * @param c character to convert
+    * @return hex value in base 10
+    */
+   public static int hex2dec(char c) {
+      int value;
+      if (c >= '0' && c <='9')
       {
-         System.out.println(inputChar - 'a' + 10);
+         value = c - '0';
+      }
+      else if (c >= 'A' && c <= 'F')
+      {
+         value = c - 'A' + 10;
+      }
+      else if (c >= 'a' && c <= 'f')
+      {
+         value = c - 'a' + 10;
       }
       else 
       {
-         System.out.println("The character " + inputChar + " is invalid: " + inputChar + " is not a hexadecimal digit.");
+         value = -1;
       }
-      
+      return value;
    }
 }
