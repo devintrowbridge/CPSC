@@ -1,0 +1,24 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+%opening
+\title{Programming Assignment 1 Report}
+\author{Devin K. Trowbridge}
+
+\begin{document}
+
+\maketitle
+Written in Java and compiled using OpenJDK 14.0.2 2020-07-14. 
+Three standalone programs are included in the zip file:
+\begin{enumerate}
+  \item btd (binary to decimal)
+  \item htd (hex to decimal)
+  \item dtb (decimal to binary)
+\end{enumerate}
+
+Pretty straightforward assignment, especially after working through all of the quizzes and watching the videos. Originally I had all of the conversion computations in main, but decided to move them into their own static functions in order to simplify unit testing with JUnit. The unit tests gave me great confidence in my solutions.
+
+My full time job has me writing code in C++, so I was pretty disheartened by Java's lack of native unsigned types. After some googling, it looks like I'm not the only one! This translated into the dtb program supporting positive numbers way past $2^{32}-1$. In fact it supports positive numbers all the way up to $2^{63} - 1$. I figured this was acceptable since there was no limit on the max number.
+
+
+\end{document}
