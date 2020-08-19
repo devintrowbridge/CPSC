@@ -1,4 +1,12 @@
 
+/**
+ * Bank loan class for keeping track of loan balance and 
+ * processing transactions.
+ *
+ * Activity 1
+ * @author Devin Trowbridge CPSC-1223-AO1
+ * @version 2020-08-18
+ */
 public class BankLoan {
 	// constant fields
    private static final int MAX_LOAN_AMOUNT = 100000;
@@ -22,7 +30,7 @@ public class BankLoan {
    }
 
    /**
-    * Reset the loans created
+    * Reset the loans created.
     *
     */
    public static void resetLoansCreated() {
@@ -30,7 +38,7 @@ public class BankLoan {
    }
    
    /**
-    * Get the loans created
+    * Get the loans created.
     *
     * @return the loans created
     */
@@ -57,9 +65,9 @@ public class BankLoan {
    }
 
    /**
-    * Pay bank for the loan
+    * Pay bank for the loan.
     * 
-    * @param amount amount to borrow
+    * @param amountPaid amount to pay
     * @return the new loan balance after payment
     */
    public double payBank(double amountPaid) {
@@ -76,7 +84,7 @@ public class BankLoan {
    }
    
    /**
-    * Get the loan balance
+    * Get the loan balance.
     *
     * @return the loan balance
     */
@@ -85,7 +93,7 @@ public class BankLoan {
    }
    
    /**
-    * Set the loan interest rate
+    * Set the loan interest rate.
     *
     * @param interestRateIn new interest rate
     * @return true if successful
@@ -102,7 +110,7 @@ public class BankLoan {
    }
    
    /**
-    * Get the loan interest rate
+    * Get the loan interest rate.
     *
     * @return the loan interest rate
     */
@@ -111,7 +119,7 @@ public class BankLoan {
    }
    
    /**
-    * Charges interest against the loan
+    * Charges interest against the loan.
     *
     */
    public void chargeInterest() {
@@ -119,7 +127,7 @@ public class BankLoan {
    }
    
    /**
-    * Converts BankLoan object into a string 
+    * Converts BankLoan object into a string.
     *
     * @return string representation of bank loan
     */
@@ -131,7 +139,7 @@ public class BankLoan {
    }
 
    /**
-    * Makes sure the loan is a positive amount
+    * Makes sure the loan is a positive amount.
     *
     * @param amount amount to check
     * @return true if valid 
@@ -141,7 +149,7 @@ public class BankLoan {
    }
    
    /**
-    * Determines if the loan is in debt
+    * Determines if the loan is in debt.
     *
     * @param loan bank loan to check
     * @return true if in debt
