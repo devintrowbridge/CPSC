@@ -19,10 +19,16 @@ public class dtb
       Scanner in = new Scanner(System.in);
    
       // Prompt for input
-      System.out.print("\nEnter a positive integer: ");
+      System.out.print("\nEnter a positive integer less than 2^32-1: ");
       String input = in.next();
       long myUInt = Long.parseLong(input);
-      System.out.println(dec2bin(myUInt));
+      String value = dec2bin(myUInt);
+      if (value == null) {
+         System.out.println(myUInt + " is not a positive integer below 2^32-1.");
+      }
+      else {
+         System.out.println(value);
+      }
    }
    
    public static String dec2bin(long input)

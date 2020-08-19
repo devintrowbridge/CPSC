@@ -36,11 +36,9 @@ public class btd
       {
          case '1':
             value = 1;
-            System.out.println(1);
             break;
          case '0':
             value = 0;
-            System.out.println(0);
             break;
          default:
             break;
