@@ -37,9 +37,12 @@ public class Exercise3 {
     * @return binary string
     */
    public static String decToBin(long decVal) {
+     // Limit bounds 
       if (decVal < 0 || decVal > Math.pow(2.0,32.0)) 
          return null;
       
+      // Main loop: Mask the number with 1, shift right and repeat
+      // outputting result of each mask to a string
       String result = "";
       for (int i = 0; i < 32; i++) {
          result = (decVal & 1) + result;
