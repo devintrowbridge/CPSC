@@ -5,3 +5,14 @@
 *.aux
 *.gz
 *.synctex
+*.suo
+*.db
+*.tlog
+*.lastbuildstate
+*.lst
+*.sdf
+*.pdb
+*.exe
+*.ilk
+*.obj
+*.user
