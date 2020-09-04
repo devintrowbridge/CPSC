@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 /**
 * SpherocylinderList class.
 *
@@ -17,7 +19,9 @@ public class SpherocylinderList {
     * @param length length of list array
     */
    public SpherocylinderList(String name, Spherocylinder[] list, int length) {
-   
+      mName = name;
+      mList = list;
+      mLength = length;
    }
    
    /**
@@ -26,7 +30,7 @@ public class SpherocylinderList {
     * @return name of list
     */
    public String getName() {
-      return "";
+      return mName;
    }
    
    /**
@@ -35,7 +39,7 @@ public class SpherocylinderList {
     * @return length of list
     */
    public int numberOfSpherocylinders() {
-      return 0;
+      return mLength;
    }
    
    /**
@@ -44,7 +48,11 @@ public class SpherocylinderList {
     * @return total surface area of all spherocylinders
     */
    public double totalSurfaceArea() {
-      return 0.0;
+      double result = 0.0;
+      for (Spherocylinder sc : mList) {
+         result += sc.surfaceArea();
+      }
+      return result;
    }
    
    /**
@@ -53,7 +61,11 @@ public class SpherocylinderList {
     * @return total volume of all spherocylinders
     */
    public double totalVolume() {
-      return 0.0;
+      double result = 0.0;
+      for (Spherocylinder sc : mList) {
+         result += sc.volume();
+      }
+      return result;
    }
    
    /**
@@ -62,7 +74,11 @@ public class SpherocylinderList {
     * @return average surface area of all spherocylinders
     */
    public double averageSurfaceArea() {
-      return 0.0;
+      double result = 0.0;
+      for (Spherocylinder sc : mList) {
+         result += sc.surfaceArea();
+      }
+      return result / mLength;
    }
    
    /**
@@ -71,7 +87,11 @@ public class SpherocylinderList {
     * @return total volume of all spherocylinders
     */
    public double averageVolume() {
-      return 0.0;
+      double result = 0.0;
+      for (Spherocylinder sc : mList) {
+         result += sc.volume();
+      }
+      return result / mLength;
    }
    
    /**
@@ -80,7 +100,14 @@ public class SpherocylinderList {
     * @return string representation of the object
     */
    public String toString() {
-      return null;
+      DecimalFormat fmt = new DecimalFormat("#,##0.0##");
+      String result = "----- Summary for " + mName  
+         + "\nNumber of Spherocylinders: " + mLength
+         + "\nTotal Surface Area: " + fmt.format(totalSurfaceArea())
+         + "\nTotal Volume: " + fmt.format(totalVolume())
+         + "\nAverage Surface Area: " + fmt.format(averageSurfaceArea())
+         + "\nAverage Volume: " + fmt.format(averageVolume());
+      return result;
    }
    
    /**
@@ -89,7 +116,7 @@ public class SpherocylinderList {
     * @return list of spherocylinders in the object
     */
    public Spherocylinder[] getList() {
-      return null;
+      return mList;
    }
    
    /**
@@ -102,7 +129,35 @@ public class SpherocylinderList {
    public void addSpherocylinder(String label, 
                                  double radius, 
                                  double cylinderHeight) {
+      //Create the new object
+      Spherocylinder newSC = new Spherocylinder(label, radius, cylinderHeight);
       
+      // Find the first null element in the list and add the new object
+      int i;
+      for (i = 0; i < mList.length; i++) {
+         if (mList[i] == null) {
+            mList[i] = newSC;
+            break;
+         }
+      }
+      
+      // If there were no null spots open we need to allocate some more space 
+      // for the array to make room for the new object
+      if (i == mLength) {
+         Spherocylinder[] newList = new Spherocylinder[mList.length * 2];
+         
+         // Transfer all of the objects from the old list into the new one
+         int j;
+         for (j = 0; j < mLength - 1; j++) {
+            newList[j] = mList[j];
+         }
+         newList[j] = newSC;
+         
+         // Point the old list at the new one
+         mList = newList;
+      }
+      
+      mLength++; // Remember to increment the object counter
    }
    
    /**
@@ -112,7 +167,13 @@ public class SpherocylinderList {
     * @return the spherocylinder if found, null otherwise
     */
    public Spherocylinder findSpherocylinder(String label) {
-      return null;
+      Spherocylinder result = null;
+      for (Spherocylinder sc : mList) {
+         if (label.equalsIgnoreCase(sc.getLabel())) {
+            result = sc;
+         }
+      }
+      return result;
    }
    
    /**
@@ -122,7 +183,22 @@ public class SpherocylinderList {
     * @return the spherocylinder if found and deleted, null otherwise
     */
    public Spherocylinder deleteSpherocylinder(String label) {
-      return null;
+     // Find the spherocylinder first
+      Spherocylinder sc = findSpherocylinder(label);
+      
+      // If we found it, try to delete it
+      if (sc != null) {
+         // Find the object in the list and null it
+         for (int i = 0; i < mLength; i++) {
+            if (mList[i] == sc) {
+               mList[i] = null;
+               break;
+            }
+         }
+         mLength--; // Remember to decrememnt the object counter
+      }
+      
+      return sc;
    }
    
    /**
@@ -136,7 +212,23 @@ public class SpherocylinderList {
    public boolean editSpherocylinder(String label, 
                                      double radius, 
                                      double height) {
-      return true;
+      // Find the spherocylinder first
+      Spherocylinder sc = findSpherocylinder(label);
+      boolean result = false;
+      
+      if (sc != null) {
+         // Find the object in the list and edit it
+         for (Spherocylinder s : mList) {
+            if (s == sc) {
+               s.setRadius(radius);
+               s.setCylinderHeight(height);
+               break;
+            }
+         }
+         result = true;
+      }
+      
+      return result;
    }
    
    /**
@@ -145,6 +237,21 @@ public class SpherocylinderList {
     * @return the spherocylinder with the largest volme
     */
    public Spherocylinder findSpherocylinderWithLargestVolume() {
-      return null;
+      Spherocylinder result = null;
+      double largestVolume;
+      
+      // Make sure the list has a length
+      if (mList.length != 0) {
+         result = mList[0];
+         
+         // Loop over everything in the list
+         for (Spherocylinder sc : mList) {
+            if (sc.volume() > result.volume()) {
+               result = sc;
+            }
+         }
+      }
+      
+      return result;
    }
 }
