@@ -21,10 +21,10 @@ public class SpherocylinderListTest {
     *
     */ 
    @Before public void setUp() {
-      Spherocylinder[] tempArr = {s1, s2, s3};
+      Spherocylinder[] tempArr = {s1, s2, s3, null};
       Spherocylinder[] emptyArr = {};
    
-      myList = new SpherocylinderList("Test List", tempArr, tempArr.length);
+      myList = new SpherocylinderList("Test List", tempArr, 3);
       myListEmpty = new SpherocylinderList("Empty List", emptyArr, 0);
    }
 
@@ -51,7 +51,7 @@ public class SpherocylinderListTest {
     */ 
    @Test public void totalSATest() {         
       Assert.assertEquals(1672.364017, myList.totalSurfaceArea(), .000001);
-      Assert.assertEquals(0, myListEmpty.numberOfSpherocylinders());
+      Assert.assertEquals(0, myListEmpty.totalSurfaceArea(), .000001);
    }
    
    /**
@@ -60,7 +60,7 @@ public class SpherocylinderListTest {
     */ 
    @Test public void totalVolume() {         
       Assert.assertEquals(6185.592254, myList.totalVolume(), .000001);
-      Assert.assertEquals(0, myListEmpty.numberOfSpherocylinders());
+      Assert.assertEquals(0, myListEmpty.totalVolume(), .000001);
    }
    
    /**
@@ -69,7 +69,7 @@ public class SpherocylinderListTest {
     */ 
    @Test public void avgSATest() {         
       Assert.assertEquals(557.454672, myList.averageSurfaceArea(), .000001);
-      Assert.assertEquals(0, myListEmpty.numberOfSpherocylinders());
+      Assert.assertEquals(0, myListEmpty.averageSurfaceArea(), .000001);
    }
    
    /**
@@ -77,8 +77,8 @@ public class SpherocylinderListTest {
     *
     */ 
    @Test public void avgVolume() {         
-      Assert.assertEquals(2061.864084, myList.totalVolume(), .000001);
-      Assert.assertEquals(0, myListEmpty.numberOfSpherocylinders());
+      Assert.assertEquals(2061.864084, myList.averageVolume(), .000001);
+      Assert.assertEquals(0, myListEmpty.averageVolume(), .000001);
    }
    
    /**
@@ -95,7 +95,7 @@ public class SpherocylinderListTest {
     */ 
    @Test public void getListTest() {         
       Spherocylinder[] tempArr1 = myList.getList();
-      Spherocylinder[] tempArr2 = {s1, s2, s3};
+      Spherocylinder[] tempArr2 = {s1, s2, s3, null};
       
       Assert.assertArrayEquals(tempArr2, tempArr1);
    }
@@ -104,11 +104,19 @@ public class SpherocylinderListTest {
     * Test the adding and finding functions.
     *
     */ 
-   @Test public void addFindTest() {         
+   @Test public void addFindTest() { 
+      Spherocylinder[] tempArr1 = {s1, s2, s3, null};        
+      SpherocylinderList addFindList 
+         = new SpherocylinderList("Test List", tempArr1, 3);
+   
       String label = "Test4";
-      myList.addSpherocylinder(label, 11.3, 26.3);
-      Assert.assertTrue(myList.findSpherocylinder(label) != null);
-      Assert.assertTrue(myList.findSpherocylinder("nonsense") == null);
+      addFindList.addSpherocylinder(label, 11.3, 26.3);
+      addFindList.addSpherocylinder("Test5", 11.3, 26.3);
+      
+      Assert.assertTrue(addFindList.findSpherocylinder(label) != null);
+      Assert.assertTrue(
+         addFindList.findSpherocylinder(label.toUpperCase()) != null);
+      Assert.assertTrue(addFindList.findSpherocylinder("nonsense") == null);
    }
    
    /**
@@ -116,10 +124,23 @@ public class SpherocylinderListTest {
     *
     */ 
    @Test public void deleteTest() {         
-      String label = "Test5";
-      myList.addSpherocylinder(label, 11.3, 26.3);
-      Assert.assertTrue(myList.deleteSpherocylinder(label) != null);
-      Assert.assertTrue(myList.deleteSpherocylinder("nonsense") == null);
+      Spherocylinder[] tempArr1 = {s1, s2, s3, null, null};        
+      SpherocylinderList deleteList1 
+         = new SpherocylinderList("Test List", tempArr1, 3);
+      
+      String label = "Test4";
+      
+      deleteList1.addSpherocylinder(label, 11.3, 26.3);
+      Assert.assertTrue(deleteList1.deleteSpherocylinder(label) != null);
+      Assert.assertTrue(
+         deleteList1.findSpherocylinder(label.toUpperCase()) == null);
+      Assert.assertTrue(deleteList1.deleteSpherocylinder("nonsense") == null);
+      
+      Spherocylinder[] tempArr2 = {s1, s2, s3};        
+      SpherocylinderList deleteList2 
+         = new SpherocylinderList("Test List", tempArr1, 3);
+      Assert.assertTrue(
+         deleteList2.deleteSpherocylinder(s3.getLabel()) != null);
    }
    
    /**
@@ -135,6 +156,10 @@ public class SpherocylinderListTest {
       Assert.assertEquals(56.2, 
                           myList.findSpherocylinder(label).getCylinderHeight(),
                           .000001);
+      Assert.assertEquals(56.2, 
+                          myList.findSpherocylinder(
+                          label.toUpperCase()).getCylinderHeight(),
+                          .000001);                             
        
       Assert.assertTrue(!myList.editSpherocylinder("nonsense", 5, 2));
    }  
@@ -144,10 +169,13 @@ public class SpherocylinderListTest {
     *
     */ 
    @Test public void findLargestVolTest() { 
-      SpherocylinderList sList = new SpherocylinderList("Test List", null, 0);
+      Spherocylinder[] scArray = {};
+      SpherocylinderList sList 
+         = new SpherocylinderList("Test List", scArray, 0);
       sList.addSpherocylinder("Test1", 1.0, 1.0);
       sList.addSpherocylinder("Test2", .25, 3.6);
       sList.addSpherocylinder("Test3", 10.2, 5.3);
+      sList.addSpherocylinder("Test4", 0.2, 0.3);
       
       Spherocylinder mySpherocylinder = 
          sList.findSpherocylinderWithLargestVolume();
