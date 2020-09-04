@@ -7,16 +7,16 @@
 public class Scores {
    private int[] numbers;
    
-   /*
+   /**
    * Ctor.
    *
-   * @param Array of scores
+   * @param numbersIn Array of scores
    */
    public Scores(int[] numbersIn) {
       numbers = numbersIn;
    }
    
-   /*
+   /**
    * Finds and returns all of the even numbered scores.
    *
    * @return array of oddevennumbered scores
@@ -42,7 +42,7 @@ public class Scores {
       return evens;
    }
    
-   /*
+   /**
    * Finds and returns all of the odd numbered scores.
    *
    * @return array of odd numbered scores
@@ -68,7 +68,7 @@ public class Scores {
       return odds;
    }
    
-   /*
+   /**
    * Calculates average scores.
    *
    * @return average of scores
@@ -83,7 +83,7 @@ public class Scores {
       return ((double) sum) /  numbers.length;
    }
    
-   /*
+   /**
    * Creates a string representation of the object.
    *
    * @return string representation of object
@@ -98,7 +98,7 @@ public class Scores {
       return result;
    }
    
-   /*
+   /**
    * Creates a reverse string representation of the object.
    *
    * @return reverse string representation of object

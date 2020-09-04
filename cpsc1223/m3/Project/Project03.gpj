@@ -12,9 +12,15 @@ s#i0
 s#k0
 s#j0
 s#l0
-!17;g
-%\011Scores.java
-!17;f
-%\011Scores.java
-!51;t
-jgrCheckstyle0xr	%\011Scores.java	1598916007348:P	
+!54;g
+%\011Spherocylinder.java
+%\011SpherocylinderList.java
+!54;f
+%\011Spherocylinder.java
+%\011SpherocylinderList.java
+!62;l
+%\011SpherocylinderTest.java
+%\011SpherocylinderListTest.java
+!255;t
+jgrJUnit0xr	%\011SpherocylinderTest.java	1599163669108:P%\011Spherocylinder.java	%\011Spherocylinder.java	1599163669108:P%\011SpherocylinderTest.java	
+jgrCheckstyle0xr	%\011SpherocylinderTest.java	1599163159036:P	%\011Spherocylinder.java	1599163159036:P	
