@@ -7,11 +7,19 @@
 */
 public class Truck extends Vehicle {
   /** Constants. */
-   public static final double TAX_RATE = 0.02; /** */
-   public static final double ALTERNATIVE_FUEL_TAX_RATE = 0.01; /** */
-   public static final double LARGE_TRUCK_TONS_THRESHOLD = 2.0; /** */
-   public static final double LARGE_TRUCK_TAX_RATE = 0.03; /** */
+      /** Tax rate. */
+   public static final double TAX_RATE = 0.02; 
+
+      /** Alt fuel tax rate. */
+   public static final double ALTERNATIVE_FUEL_TAX_RATE = 0.01; 
+      
+      /** Weight at which additional taxes apply. */
+   public static final double LARGE_TRUCK_TONS_THRESHOLD = 2.0; 
+
+   /** Tax rate for large trucks. */
+   public static final double LARGE_TRUCK_TAX_RATE = 0.03;
    
+   /** Instance Variables. */
    private double tons = 0.0;
    
    /**

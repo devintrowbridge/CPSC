@@ -57,14 +57,9 @@ public class TruckTest {
    @Test public void settersGettersTest() {
       Truck tempTruck = new Truck("TempOwner", "TempCar", 0, true, 0);
       
-      Assert.assertNotEquals(truck1, tempTruck);
+      Assert.assertNotEquals(truck1.getTons(), tempTruck.getTons(), .000001);
       
-      tempTruck.setOwner(truck1.getOwner());
-      tempTruck.setYearMakeModel(truck1.getYearMakeModel());
-      tempTruck.setValue(truck1.getValue());
-      tempTruck.setAlternativeFuel(truck1.getAlternativeFuel());
       tempTruck.setTons(truck1.getTons());
-      
-      Assert.assertEquals(truck1, tempTruck);
+      Assert.assertEquals(truck1.getTons(), tempTruck.getTons(),  .000001);
    }
 }
