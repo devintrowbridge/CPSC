@@ -6,7 +6,9 @@
 */
 public class ElectronicsItem extends InventoryItem {
    protected double weight = 0.0;
-   protected static final double SHIPPING_COST = 1.5;
+   
+   /** Shipping Cost. */
+   public static final double SHIPPING_COST = 1.5;
    
    /**
     * Ctor.

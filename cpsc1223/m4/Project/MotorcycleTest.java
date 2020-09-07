@@ -50,5 +50,13 @@ public class MotorcycleTest {
             + "\nwith Tax Rate: 0.005 Large Bike Tax Rate: 0.015";
    
       Assert.assertEquals(test1, motorcycle1.toString());
+      
+      String test2 = 
+            "Trowbridge, Devin: Motorcycle 2016 Royal Enfield Himalayan "
+            + "(Alternative Fuel)"
+            + "\nValue: $5,000.00 Use Tax: $12.50"
+            + "\nwith Tax Rate: 0.0025";
+   
+      Assert.assertEquals(test2, motorcycle2.toString());
    }
 }

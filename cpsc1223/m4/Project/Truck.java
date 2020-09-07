@@ -20,7 +20,7 @@ public class Truck extends Vehicle {
    public static final double LARGE_TRUCK_TAX_RATE = 0.03;
    
    /** Instance Variables. */
-   private double tons = 0.0;
+   protected double tons = 0.0;
    
    /**
     * Ctor.

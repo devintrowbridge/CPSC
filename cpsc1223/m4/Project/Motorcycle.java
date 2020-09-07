@@ -9,7 +9,7 @@ public class Motorcycle extends Vehicle {
   /** Constants. */
    public static final double TAX_RATE = 0.005; /** */
    public static final double ALTERNATIVE_FUEL_TAX_RATE = 0.0025; /** */
-   public static final double LARGE_BIKE_CC_THRESHHOLD = 499; /** */
+   public static final double LARGE_BIKE_CC_THRESHOLD = 499; /** */
    public static final double LARGE_BIKE_TAX_RATE = .015; /** */
    
    /** Instance variables. */
@@ -48,7 +48,7 @@ public class Motorcycle extends Vehicle {
          tax = value * TAX_RATE;
       }
       
-      if (getEngineSize() > LARGE_BIKE_CC_THRESHHOLD) {
+      if (getEngineSize() > LARGE_BIKE_CC_THRESHOLD) {
          tax += value * LARGE_BIKE_TAX_RATE;
       }
       
@@ -70,7 +70,7 @@ public class Motorcycle extends Vehicle {
          result += "\nwith Tax Rate: " + TAX_RATE;
       }
          
-      if (getEngineSize() > LARGE_BIKE_CC_THRESHHOLD) {
+      if (getEngineSize() > LARGE_BIKE_CC_THRESHOLD) {
          result += " Large Bike Tax Rate: " + LARGE_BIKE_TAX_RATE;
       }
          
