@@ -1,0 +1,30 @@
+!1514;s
+J
+SAU0JGRASP_MAIN_BOUNDS=%<CONTROL_SHELL_BOUNDS>\012PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning\012GCC_COLORS=\012-Run\012ADD_EXE_PATH==Y\012
+SCU0JGRASP_MAIN_BOUNDS=%<CONTROL_SHELL_BOUNDS>\012PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning\012GCC_COLORS=\012-Run\012ADD_EXE_PATH==Y\012
+S+U0JGRASP_MAIN_BOUNDS=%<CONTROL_SHELL_BOUNDS>\012PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning\012GCC_COLORS=\012-Run\012ADD_EXE_PATH==Y\012
+SJU0JGRASP_MAIN_BOUNDS=%<CONTROL_SHELL_BOUNDS>\012CLASSPATH=+%;%<EXTENSION_CLASSPATHS>\012CLASSPATH+=%<JGRASP_CLASSPATHS>%;\012File\012CLASSPATH+=.%;\012CLASSPATH+=%<SRC_CLASSPATHS>%;\012ProjectOrFile\012PATH+=%<JAVA_BIN_DIR>%;\012PATH+=%<JGRASP_PATHS>%;\012Debug +Debug_Applet\012CLASSPATH=+%;%<INJECTION_CLASSPATHS>\012Compile\012NOT_FOUND_MESSAGE==Make sure you have the full JDK, not just the JRE, installed.\\nThe JDK is available from https://www.oracle.com/technetwork/java/index.html.\012Run_Applet +Debug_Applet\012ADD_APPLETVIEWER_CLASSPATH==Y\012Document\012CLASSPATH=+%;%<TOOL_CLASSPATHS>\012CLASSPATH+=%<CLASSES_DIR>%;\012
+SXU0
+SOU0JGRASP_MAIN_BOUNDS=%<CONTROL_SHELL_BOUNDS>\012PATH+=%<JGRASP_PATHS>%;\012PATH=+%;%<JGRASP_C_PATHS>\012CYGWIN=nodosfilewarning\012GCC_COLORS=\012-Run\012ADD_EXE_PATH==Y\012
+SyU0JGRASP_MAIN_BOUNDS=%<CONTROL_SHELL_BOUNDS>\012PATH+=%<PYTHON_PATH>%;\012PATH+=%<JGRASP_PATHS>%;\012CYGWIN=nodosfilewarning\012GCC_COLORS=
+SPU0
+s#i0
+s#k0
+s#j0
+s#l0
+!3551;d
+[\012  grasp [\012   legendy -97.16666666666667\012   legendx 0.0\012   version 1\012   winflags 3\012   eheight 1197\012   ewidth 856\012   height 1197\012   width 856\012   wbp 0\012   initlayout 0\012   yoffs 0.0\012   xoffs 0.0\012   scale 1.0\012   args ""\012   otherflags 139\012   shallowjar 1\012   visflags 118423807\012  ]\012  directed 1\012  node [\012   ClassInfo [\012    fields "ALTERNATIVE_FUEL_TAX_RATE\\011D\\011\\01125\\011\\011\\011Car\011LUXURY_TAX_RATE\\011D\\011\\01125\\011\\011\\011Car\011LUXURY_THRESHOLD\\011D\\011\\01125\\011\\011\\011Car\011TAX_RATE\\011D\\011\\01125\\011\\011\\011Car\011Car\\011(Ljava/lang/String;Ljava/lang/String;DZ)V\\011c\\0111\\011\\011\\011Car\011toString\\011()Ljava/lang/String;\\011\\0111\\011\\011\\011Car\011useTax\\011()D\\011\\0111\\011\\011\\011Car"\012    condition 0\012    access2 0\012    access 2228257\012    classname "Car"\012    fromclassfiledate 1599441150919\012    fromclassfilename "%\011Car.class"\012    fromfilename "%\011Car.java"\012   ]\012   id 0\012   graphics [\012    center [\012     x 0.0\012     y -64.0\012     z 0.0\012    ]\012   ]\012   vgj [\012    flags 0\012   ]\012  ]\012  node [\012   ClassInfo [\012    fields "altFuel\\011Z\\011\\0114\\011\\011\\011Vehicle\011owner\\011Ljava/lang/String;\\011\\0114\\011\\011\\011Vehicle\011value\\011D\\011\\0114\\011\\011\\011Vehicle\011vehicleCount\\011I\\011\\01112\\011\\011\\011Vehicle\011yearMakeModel\\011Ljava/lang/String;\\011\\0114\\011\\011\\011Vehicle\011Vehicle\\011(Ljava/lang/String;Ljava/lang/String;DZ)V\\011c\\0111\\011\\011\\011Vehicle\011<clinit>\\011()V\\011\\0118\\011\\011\\011Vehicle\011equals\\011(Ljava/lang/Object;)Z\\011\\0111\\011\\011\\011Vehicle\011getAlternativeFuel\\011()Z\\011\\0111\\011\\011\\011Vehicle\011getOwner\\011()Ljava/lang/String;\\011\\0111\\011\\011\\011Vehicle\011getValue\\011()D\\011\\0111\\011\\011\\011Vehicle\011getVehicleCount\\011()I\\011\\0119\\011\\011\\011Vehicle\011getYearMakeModel\\011()Ljava/lang/String;\\011\\0111\\011\\011\\011Vehicle\011hashCode\\011()I\\011\\0111\\011\\011\\011Vehicle\011resetVehicleCount\\011()V\\011\\0119\\011\\011\\011Vehicle\011setAlternativeFuel\\011(Z)V\\011\\0111\\011\\011\\011Vehicle\011setOwner\\011(Ljava/lang/String;)V\\011\\0111\\011\\011\\011Vehicle\011setValue\\011(D)V\\011\\0111\\011\\011\\011Vehicle\011setYearMakeModel\\011(Ljava/lang/String;)V\\011\\0111\\011\\011\\011Vehicle\011toString\\011()Ljava/lang/String;\\011\\0111\\011\\011\\011Vehicle\011useTax\\011()D\\011\\0111025\\011\\011\\011Vehicle"\012    condition 0\012    access2 0\012    access 2229281\012    classname "Vehicle"\012    fromclassfiledate 1599441150953\012    fromclassfilename "%\011Vehicle.class"\012    fromfilename "%\011Vehicle.java"\012   ]\012   id 1\012   graphics [\012    center [\012     x 0.0\012     y 0.0\012     z 0.0\012    ]\012   ]\012   vgj [\012    flags 0\012   ]\012  ]\012  edge [\012   ClassInfo [\012    dependencies "altFuel\\011Z\\011\\011\\011\\011\\011Vehicle\011Vehicle\\011(Ljava/lang/String;Ljava/lang/String;DZ)V\\011c\\011\\011\\011\\011Vehicle\011toString\\011()Ljava/lang/String;\\011\\011\\011\\011\\011Vehicle"\012    type 0\012   ]\012   source 1\012   target 0\012   graphics [\012    Point [\012     x 0.0\012     y -36.0\012     z 0.0\012    ]\012    Point [\012     x 0.0\012     y -36.0\012     z 0.0\012    ]\012   ]\012   graphics [\012    Point [\012     x 0.0\012     y -36.0\012     z 0.0\012    ]\012    Point [\012     x 0.0\012     y -36.0\012     z 0.0\012    ]\012   ]\012  ]\012 ]!48;g
+%\011Car.java
+%\011Vehicle.java
+%\011Truck.java
+!48;f
+%\011Car.java
+%\011Vehicle.java
+%\011Truck.java
+!60;l
+%\011VehicleTest.java
+%\011TruckTest.java
+%\011CarTest.java
+!223;t
+jgrJUnit0xr	%\011Car.java	1599441154630:P%\011CarTest.java	%\011CarTest.java	1599441154630:P%\011Car.java	
+jgrCheckstyle0xr	%\011Car.java	1599441140175:P	%\011Vehicle.java	1599441140175:P	%\011CarTest.java	1599441140175:P	
