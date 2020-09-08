@@ -1,0 +1,20 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+%opening
+\title{Programming Assignment 2 Report}
+\author{Devin K. Trowbridge}
+
+\begin{document}
+
+\maketitle
+
+Code compiles and runs successfully on Windows 7 using VS 2017 (v141) targeting Windows SDK 10.0.17134.0.
+
+It was exciting to write and run some assembly code that actually does something interactive with the console. I think the project really highlights the importance and prevelance of bitwise operations when you are working at this low level.
+
+The only issue I had was with trying to use \verb|F0h| to use a mask. The assembler said that it wasn't a valid symbol. I did a little Googling and found out assembler interprets \verb|F0h| as a variable name.
+
+Looking forward to learning how to define functions. The monolithic wall of assembly code was difficiult to look at.
+
+\end{document}
