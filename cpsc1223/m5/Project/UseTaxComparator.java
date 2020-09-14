@@ -1,4 +1,3 @@
-import java.lang.Double;
 import java.util.Comparator;
 
 /**
@@ -9,6 +8,13 @@ import java.util.Comparator;
 */
 public class UseTaxComparator implements Comparator<Vehicle> {
    
+   /**
+    * Override that compares two vehicle objects.
+    *
+    * @param v1 left hand argument
+    * @param v2 right hand argument
+    * @return returns the result of comparing use tax
+    */ 
    public int compare(Vehicle v1, Vehicle v2) {
       return Double.compare(v1.useTax(), v2.useTax());
    } 

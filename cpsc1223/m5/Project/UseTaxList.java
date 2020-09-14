@@ -1,9 +1,6 @@
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.io.File;
-import java.lang.Boolean;
-import java.lang.Integer;
-import java.lang.Double;
 import java.util.Arrays;
 import java.text.DecimalFormat; 
 
@@ -18,11 +15,19 @@ public class UseTaxList {
    private Vehicle[] vehicleList = {};
    private String[] excludedRecords = {};
    
+   /** 
+    * Ctor.
+    */ 
    public UseTaxList() {
       // No action necessary
    }
    
-   public void readVehicleFile (String fileName) throws FileNotFoundException {
+   /** 
+    * Reads in a file with formatted vehicle data.
+    * @param fileName file to read in
+    * @throws FileNotFoundException if passed file name can't be found
+    */ 
+   public void readVehicleFile(String fileName) throws FileNotFoundException {
       Scanner fileScan = new Scanner(new File(fileName));
       Scanner lineScan;
       
@@ -34,9 +39,10 @@ public class UseTaxList {
       
       // While there is still data in the file, keep grabbing lines
       while (fileScan.hasNext()) {
-         String record = fileScan.next();
+         String record = fileScan.nextLine();
          lineScan = new Scanner(record).useDelimiter(";");
          
+         i = 0;
          while (lineScan.hasNext()) {
             fields[i] = (lineScan.next()).trim();
             i++;
@@ -45,7 +51,7 @@ public class UseTaxList {
          double  value   = Double.parseDouble(fields[3]);
          boolean altFuel = Boolean.parseBoolean(fields[4]);
          
-         switch (fields[0].charAt(0)) {   
+         switch (Character.toUpperCase(fields[0].charAt(0))) {   
             case 'C':   // Car  
                addVehicle(new Car(fields[1], fields[2], value, altFuel));
                break;
@@ -78,44 +84,77 @@ public class UseTaxList {
          }
          
          fields = new String[10];
+         
       }
    }
    
+   /** 
+    * Getter for tax district.
+    * @return tax district as string
+    */ 
    public String getTaxDistrict() {
       return taxDistrict;
    }
    
+   /** 
+    * Setter for tax district.
+    * @param taxDistrictIn tax district
+    */ 
    public void setTaxDistrict(String taxDistrictIn) {
       taxDistrict = taxDistrictIn;
    }
    
+   /** 
+    * Getter for vehicle list.
+    * @return list of vehicles
+    */ 
    public Vehicle[] getVehicleList() {
       return vehicleList;
    }
    
+   /** 
+    * Getter for excluded records.
+    * @return list of excluded records
+    */ 
    public String[] getExcludedRecords() {
       return excludedRecords;
    }
    
+   /** 
+    * Add excluded records to list.
+    * @param excludedRecord excluded record to add to list
+    */ 
    public void addExcludedRecord(String excludedRecord) {
       excludedRecords = Arrays.copyOf(excludedRecords, 
                                       excludedRecords.length + 1);
       excludedRecords[excludedRecords.length - 1] = excludedRecord;
    }
    
+   /** 
+    * Add vehicle to list.
+    * @param vehicleIn vehicle to add to list
+    */ 
    public void addVehicle(Vehicle vehicleIn) {
       vehicleList = Arrays.copyOf(vehicleList, vehicleList.length + 1);
       vehicleList[vehicleList.length - 1] = vehicleIn;
    }
    
+   /** 
+    * Generates string representation of UseTaxList.
+    * @return string representation of use tax list
+    */ 
    public String toString() {
       String result = "";
       for (Vehicle vehicle : vehicleList) {
-         result = "\n" + vehicle.toString() + "\n";
+         result += "\n" + vehicle.toString() + "\n";
       }
       return result;
    }
    
+   /** 
+    * Sums the use tax of every vehicle in the list.
+    * @return total use tax
+    */ 
    public double calculateTotalUseTax() {
       double result = 0.0;
       for (Vehicle vehicle : vehicleList) {
@@ -124,6 +163,10 @@ public class UseTaxList {
       return result;
    }
    
+   /** 
+    * Sums the value of every vehicle in the list.
+    * @return total value
+    */ 
    public double calculateTotalValue() {
       double result = 0.0;
       for (Vehicle vehicle : vehicleList) {
@@ -132,6 +175,10 @@ public class UseTaxList {
       return result;
    }
    
+   /** 
+    * Generates a summary for the vehicle list.
+    * @return summary string
+    */ 
    public String summary() {
       String result = "";
       DecimalFormat fmt = new DecimalFormat("#,##0.00");
@@ -140,21 +187,17 @@ public class UseTaxList {
          "------------------------------\n"
          + "Summary for " + taxDistrict + "\n"
          + "------------------------------\n"
-         + " Number of vehicles: " + vehicleList.length + "\n"
-         + "Total Value: " + fmt.format(calculateTotalValue()) + "\n"
-         + "Total Use Tax: " + fmt.format(calculateTotalUseTax()) + "\n"
-         + "\n"
-         + "\n"
-         + listByOwner()
-         + "\n"
-         + listByUseTax()
-         + "\n"
-         + excludedRecordsList()
-            + "\n";
+         + "Number of Vehicles: " + vehicleList.length + "\n"
+         + "Total Value: $" + fmt.format(calculateTotalValue()) + "\n"
+         + "Total Use Tax: $" + fmt.format(calculateTotalUseTax()) + "\n\n";
          
       return result;
    }
    
+   /** 
+    * Generates a list of vehicles sorted by owner.
+    * @return list string
+    */  
    public String listByOwner() {
       String result = "";
       
@@ -164,12 +207,16 @@ public class UseTaxList {
            "------------------------------\n"
          + "Vehicles by Owner\n"
          + "------------------------------\n"
-         + "\n"
-         + toString();
+         + toString()
+         + "\n";
       
       return result;
    }
    
+   /** 
+    * Generates a list of vehicles sorted by use tax.
+    * @return list string
+    */  
    public String listByUseTax() {
       String result = "";
       
@@ -179,23 +226,26 @@ public class UseTaxList {
            "------------------------------\n"
          + "Vehicles by Use Tax\n"
          + "------------------------------\n"
-         + "\n"
-         + toString();
+         + toString()
+         + "\n";
       
       return result;
    }
    
+   /** 
+    * Generates a list of excluded records.
+    * @return list string
+    */  
    public String excludedRecordsList() {
       String result = "";
       
       result = 
            "------------------------------\n"
          + "Excluded Records\n"
-         + "------------------------------\n"
-         + "\n";
+         + "------------------------------\n";
        
       for (String record : excludedRecords) {
-         result += record + "\n";
+         result += "\n" + record + "\n";
       }
    
       return result;
