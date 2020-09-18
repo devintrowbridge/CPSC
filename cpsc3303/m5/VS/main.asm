@@ -9,7 +9,7 @@ ExitProcess proto,dwExitCode:dword
 .data
 	char BYTE ?
   sumResult BYTE ?
-  
+  hexDigits BYTE ?
 .code
 main PROC
   CALL ReadHexByte
@@ -17,19 +17,19 @@ main PROC
   MOV sumResult, DL
   
   MOV AL, DH
-  CALL WriteHexByte
+  CALL WriteTwoHexDigits
   MOV AL, sumResult
   CALL WriteHexByte
   
 	INVOKE ExitProcess,0
 main ENDP
 
-;--------------------------------------------;
-; Turns a digit into its ascii equivalent    ;
-;                                            ;
-; Receives: The digit to convert in AL       ;
-; Returns : The ascii code in DL             ;
-;--------------------------------------------;
+;--------------------------------------------
+; Gets the ascii code for a hex digit
+;                                            
+; Receives: The digit to convert in AL       
+; Returns : The ascii code in DL             
+;--------------------------------------------
 DigitValue2ASCII PROC
   MOV DL, AL
   ADD DL, 30h
@@ -39,11 +39,12 @@ DigitValue2ASCII PROC
     ADD DL, 7h
   endf:
 
-    RET
+  RET
 DigitValue2ASCII ENDP
 
 ;--------------------------------------------
-; Turns a hex ascii character into a number  
+; Takes the ascii code for a hex digit and 
+; returns the hex digit in DL 
 ;                                            
 ; Receives: The hex char in AL               
 ; Returns : The number in DL                 
@@ -61,34 +62,14 @@ ASCII2DigitValue PROC
 ASCII2DigitValue ENDP
 
 ;--------------------------------------------
-; Writes a hex byte to the console           
+; Writes the hex digits in AL to the
+; console, followed by an 'h' and CRLF           
 ;                                            
 ; Receives: The hex byte in AL               
 ;--------------------------------------------
 WriteHexByte PROC
-  MOV char, AL  
-  
-  ; Write the first digit out
-  AND AL, 0F0h
-  SHR AL, 4
-  CALL DigitValue2ASCII
-  MOV AL, DL
-  CALL WriteChar
-  
-  ; Write the second digit out
-  MOV AL, char
-  AND AL, 0Fh 
-  CALL DigitValue2ASCII
-  MOV AL, DL
-  CALL WriteChar
-  
-  ; Write the h, carriage return, and line feed out
-  MOV EAX, 000D0A68h ; carriage - line feed - 'h'
-  MOV CL, 3
-  Output:
-    CALL WriteChar
-    SHR EAX, 8
-  LOOP Output  
+  CALL WriteTwoHexDigits
+  CALL WriteHexTail 
  
   RET
 WriteHexByte ENDP
@@ -124,12 +105,54 @@ SumFirstN PROC
   MOV DX, 0
   
   MOV CL, AL
-  Sum:
-    ADD DX, CX
-  LOOP Sum
+  CMP AL, 00h
+  JZ skip
+    sum:
+      ADD DX, CX
+    LOOP sum
+  skip:
   
   RET
 SumFirstN ENDP
+
+;--------------------------------------------
+; Writes the character 'h', a carriage return
+; and line feed to the console          
+;--------------------------------------------
+WriteHexTail PROC
+  MOV AL, 68h
+  CALL WriteChar
+  MOV AL, 0Ah
+  CALL WriteChar
+  MOV AL, 0Dh
+  CALL WriteChar
+  
+  RET
+WriteHexTail ENDP
+
+;--------------------------------------------
+; Writes the hex digits in AL to the console        
+;                                            
+; Receives: The digits in AL          
+;--------------------------------------------
+WriteTwoHexDigits PROC
+  MOV hexDigits, AL  
+  
+  ; Write the first digit out
+  SHR AL, 4
+  CALL DigitValue2ASCII
+  MOV AL, DL
+  CALL WriteChar
+  
+  ; Write the second digit out
+  MOV AL, hexDigits
+  AND AL, 0Fh 
+  CALL DigitValue2ASCII
+  MOV AL, DL
+  CALL WriteChar
+  
+  RET
+WriteTwoHexDigits ENDP
 
 END main
 
