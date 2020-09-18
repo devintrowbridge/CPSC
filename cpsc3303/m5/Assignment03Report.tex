@@ -1,0 +1,21 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+%opening
+\title{Programming Assignment 3 Report}
+\author{Devin K. Trowbridge}
+
+\begin{document}
+
+\maketitle
+
+Code compiles and runs successfully on Windows 7 using VS 2017 (v141) targeting Windows SDK 10.0.17134.0.
+
+This assignment was much more challenging than I anticipated it to be after reading over the pdf.The most challenging part for me was managing registers and variables. 
+
+Deciding when to push something out into memory and when to keep it in the CPU was difficult. There seems to be a balance between declaring a variable for everything, and bending over backwards to keep data in the registers.
+
+It was also difficult to make sure that $\verb|PROC|$s didn't stomp all over the variables and registers. I tried my hardest to make sure the various $\verb|PROC|$s used as few registers and variables as possible in an effort to not corrupt or overwrite the calling $\verb|PROC|$'s data.
+
+As a C++ developer, writing assembly feels as though all of my variables are ``globals'' which is really difficult to get used to.
+\end{document}
