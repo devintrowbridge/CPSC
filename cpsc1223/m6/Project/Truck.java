@@ -30,7 +30,7 @@ public class Truck extends Vehicle {
     * @param valueIn value of the vehicle
     * @param altFuelIn true if the vehicle is an alternative fuel vehicle
     * @param tonsIn tonnage of truck
-    * @throws NegativeValueException
+    * @throws NegativeValueException when tons/value is negative
     */
    public Truck(String  ownerIn, 
                 String  yearMakeModelIn, 
@@ -93,7 +93,7 @@ public class Truck extends Vehicle {
     * Setter for tons.
     *
     * @param tonsIn tonnage of truck
-    * @throws NegativeValueException
+    * @throws NegativeValueException when tons is negative
     */ 
    public void setTons(double tonsIn) throws NegativeValueException {
       if (tonsIn < 0) {

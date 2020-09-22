@@ -15,7 +15,7 @@ public class MotorcycleTest {
 
    /**
     * Set up for all tests.
-    * @throws NegativeValueException
+    * @throws NegativeValueException when value or engine size is negative
     */
    @Before public void setUp() throws NegativeValueException {
       motorcycle1 

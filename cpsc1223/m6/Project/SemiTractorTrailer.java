@@ -22,7 +22,7 @@ public class SemiTractorTrailer extends Truck {
     * @param altFuelIn true if the vehicle is an alternative fuel vehicle
     * @param tonsIn tonnage of truck
     * @param axlesIn number of axles on the truck
-    * @throws NegativeValueException
+    * @throws NegativeValueException when tons/value/axles is negative
     */
    public SemiTractorTrailer(String  ownerIn, 
                              String  yearMakeModelIn, 
@@ -63,7 +63,7 @@ public class SemiTractorTrailer extends Truck {
     * Setter for axles.
     *
     * @param axlesIn number of axles
-    * @throws NegativeValueException
+    * @throws NegativeValueException when axles is negative
     */ 
    public void setAxles(int axlesIn) throws NegativeValueException {
       if (axlesIn < 0) {

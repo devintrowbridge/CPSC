@@ -23,7 +23,7 @@ public class Motorcycle extends Vehicle {
     * @param valueIn value of the vehicle
     * @param altFuelIn true if the vehicle is an alternative fuel vehicle
     * @param engineSizeIn size of engine
-    * @throws NegativeValueException
+    * @throws NegativeValueException when engine size is negative
     */
    public Motorcycle(String  ownerIn, 
                      String  yearMakeModelIn, 
@@ -85,7 +85,7 @@ public class Motorcycle extends Vehicle {
     * Setter for engine size.
     *
     * @param engineSizeIn engine size of motorcycle
-    * @throws NegativeValueException
+    * @throws NegativeValueException when engine size is negative
     */ 
    public void setEngineSize(double engineSizeIn) 
       throws NegativeValueException {

@@ -15,7 +15,7 @@ public class VehicleTest {
    private Car car4;
    
    /** Set up for all tests.  
-   * @throws NegativeValueException
+   * @throws NegativeValueException when value is negative
    */
    @Before public void setUp() throws NegativeValueException {
       car1 
@@ -35,7 +35,9 @@ public class VehicleTest {
       Assert.assertFalse(car1.equals(new String("Test")));
    }
    
-   /** Test vehicle setters/getters. */
+   /** Test vehicle setters/getters. 
+   * @throws NegativeValueException when value is negative 
+   */
    @Test public void settersGettersTest() throws NegativeValueException {
       Car tempCar = new Car("TempOwner", "TempCar", 0, true);
       
@@ -50,7 +52,7 @@ public class VehicleTest {
    }
    
    /** Test vehicle count. 
-   * @throws NegativeValueException
+   * @throws NegativeValueException when value is negative
    */
    @Test public void vehicleCountTest() throws NegativeValueException {
       Car.resetVehicleCount();

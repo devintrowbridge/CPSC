@@ -16,7 +16,7 @@ public class CarTest {
 
    /**
     * Set up for all tests.
-    * @throws NegativeValueException
+    * @throws NegativeValueException when value is negative
     */
    @Before public void setUp() throws NegativeValueException {
       car1 = new Car("Jones, Sam",  "2017 Honda Accord",        22000,  false);

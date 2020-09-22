@@ -30,7 +30,7 @@ public class VehiclesPart3Test {
    }
    
    /** A test that always fails. 
-   * @throws FileNotFoundException 
+   * @throws FileNotFoundException when file is not found
    */
    @Test public void fileNameTest() throws FileNotFoundException {
       VehiclesPart3 vp3 = new VehiclesPart3();

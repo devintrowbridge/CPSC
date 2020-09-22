@@ -17,7 +17,7 @@ public class UseTaxListTest {
     * @throws FileNotFoundException if passed file name can't be found
     */
    @Before public void setUp() throws FileNotFoundException {
-      useTaxList.readVehicleFile("vehicles1.txt");
+      useTaxList.readVehicleFile("vehicles2.txt");
    }
 
    /** Test to make sure the file was read in correctly. */
@@ -28,11 +28,12 @@ public class UseTaxListTest {
       Assert.assertEquals("Jones, Jo", vList[1].getOwner());
       Assert.assertEquals("2015 Mercedes-Benz Coupe", 
                           vList[2].getYearMakeModel());
-      Assert.assertEquals(30000, vList[4].getValue(), .000001);
-      Assert.assertEquals("Motorcycle", vList[7].getClass().getName());   
+      Assert.assertEquals(110000, vList[4].getValue(), .000001);
+      Assert.assertEquals("SemiTractorTrailer", 
+                          vList[7].getClass().getName());   
       
       String[] exRecordsList = useTaxList.getExcludedRecords();
-      Assert.assertEquals(2, exRecordsList.length);
+      Assert.assertEquals(8, exRecordsList.length);
    }
    
    /** Test for tax district setters and getters. */
@@ -47,15 +48,19 @@ public class UseTaxListTest {
    /** Test for to string. */
    @Test public void toStringTest() {
       String test = 
-           "\nJones, Sam: Car 2017 Honda Accord"
+           "\nJones, Sam: Car 2014 Honda Accord"
          + "\nValue: $22,000.00 Use Tax: $220.00"
          + "\nwith Tax Rate: 0.01"
          + "\n"
-         + "\nJones, Jo: Car 2017 Honda Accord (Alternative Fuel)"
+         + "\nJones, Jo: Car 2014 Honda Accord (Alternative Fuel)"
          + "\nValue: $22,000.00 Use Tax: $110.00"
          + "\nwith Tax Rate: 0.005"
          + "\n"
          + "\nSmith, Pat: Car 2015 Mercedes-Benz Coupe"
+         + "\nValue: $110,000.00 Use Tax: $3,300.00"
+         + "\nwith Tax Rate: 0.01 Luxury Tax Rate: 0.02"
+         + "\n"
+         + "\nSmith, Pop: Car 2015 Mercedes-Benz Coupe"
          + "\nValue: $110,000.00 Use Tax: $3,300.00"
          + "\nwith Tax Rate: 0.01 Luxury Tax Rate: 0.02"
          + "\n"
@@ -71,7 +76,7 @@ public class UseTaxListTest {
          + "\nValue: $40,000.00 Use Tax: $1,600.00"
          + "\nwith Tax Rate: 0.01 Large Truck Tax Rate: 0.03"
          + "\n"
-         + "\nWilliams, Pat: SemiTractorTrailer 2012 International Big Boy"
+         + "\nWilliams, Pat: SemiTractorTrailer 2010 International Big Boy"
          + "\nValue: $45,000.00 Use Tax: $3,150.00"
          + "\nwith Tax Rate: 0.02 " 
                 + "Large Truck Tax Rate: 0.03 " 
@@ -96,11 +101,11 @@ public class UseTaxListTest {
          + "\nValue: $14,000.00 Use Tax: $280.00"
          + "\nwith Tax Rate: 0.005 Large Bike Tax Rate: 0.015"
          + "\n"
-         + "\nJones, Jo: Car 2017 Honda Accord (Alternative Fuel)"
+         + "\nJones, Jo: Car 2014 Honda Accord (Alternative Fuel)"
          + "\nValue: $22,000.00 Use Tax: $110.00"
          + "\nwith Tax Rate: 0.005"
          + "\n"
-         + "\nJones, Sam: Car 2017 Honda Accord"
+         + "\nJones, Sam: Car 2014 Honda Accord"
          + "\nValue: $22,000.00 Use Tax: $220.00"
          + "\nwith Tax Rate: 0.01"
          + "\n"
@@ -112,11 +117,15 @@ public class UseTaxListTest {
          + "\nValue: $110,000.00 Use Tax: $3,300.00"
          + "\nwith Tax Rate: 0.01 Luxury Tax Rate: 0.02"
          + "\n"
+         + "\nSmith, Pop: Car 2015 Mercedes-Benz Coupe"
+         + "\nValue: $110,000.00 Use Tax: $3,300.00"
+         + "\nwith Tax Rate: 0.01 Luxury Tax Rate: 0.02"
+         + "\n"
          + "\nWilliams, Jo: Truck 2012 Chevy Silverado"
          + "\nValue: $30,000.00 Use Tax: $600.00"
          + "\nwith Tax Rate: 0.02"
          + "\n"
-         + "\nWilliams, Pat: SemiTractorTrailer 2012 International Big Boy"
+         + "\nWilliams, Pat: SemiTractorTrailer 2010 International Big Boy"
          + "\nValue: $45,000.00 Use Tax: $3,150.00"
          + "\nwith Tax Rate: 0.02 "
                 + "Large Truck Tax Rate: 0.03 "
@@ -136,11 +145,11 @@ public class UseTaxListTest {
          + "\nVehicles by Use Tax"
          + "\n------------------------------"
          + "\n"
-         + "\nJones, Jo: Car 2017 Honda Accord (Alternative Fuel)"
+         + "\nJones, Jo: Car 2014 Honda Accord (Alternative Fuel)"
          + "\nValue: $22,000.00 Use Tax: $110.00"
          + "\nwith Tax Rate: 0.005"
          + "\n"
-         + "\nJones, Sam: Car 2017 Honda Accord"
+         + "\nJones, Sam: Car 2014 Honda Accord"
          + "\nValue: $22,000.00 Use Tax: $220.00"
          + "\nwith Tax Rate: 0.01"
          + "\n"
@@ -160,7 +169,7 @@ public class UseTaxListTest {
          + "\nValue: $110,000.00 Use Tax: $2,750.00"
          + "\nwith Tax Rate: 0.005 Luxury Tax Rate: 0.02"
          + "\n"
-         + "\nWilliams, Pat: SemiTractorTrailer 2012 International Big Boy"
+         + "\nWilliams, Pat: SemiTractorTrailer 2010 International Big Boy"
          + "\nValue: $45,000.00 Use Tax: $3,150.00"
          + "\nwith Tax Rate: 0.02 "
                 + "Large Truck Tax Rate: 0.03 "
@@ -168,7 +177,12 @@ public class UseTaxListTest {
          + "\n"
          + "\nSmith, Pat: Car 2015 Mercedes-Benz Coupe"
          + "\nValue: $110,000.00 Use Tax: $3,300.00"
-         + "\nwith Tax Rate: 0.01 Luxury Tax Rate: 0.02\n\n";
+         + "\nwith Tax Rate: 0.01 Luxury Tax Rate: 0.02"
+         + "\n"
+         + "\nSmith, Pop: Car 2015 Mercedes-Benz Coupe"
+         + "\nValue: $110,000.00 Use Tax: $3,300.00"
+         + "\nwith Tax Rate: 0.01 Luxury Tax Rate: 0.02"
+         + "\n\n";
    
       Assert.assertEquals(test, useTaxList.listByUseTax());
    }
@@ -179,9 +193,9 @@ public class UseTaxListTest {
               "------------------------------"
             + "\nSummary for Tax District 52"
             + "\n------------------------------"
-            + "\nNumber of Vehicles: 8"
-            + "\nTotal Value: $393,000.00"
-            + "\nTotal Use Tax: $12,010.00"
+            + "\nNumber of Vehicles: 9"
+            + "\nTotal Value: $503,000.00"
+            + "\nTotal Use Tax: $15,310.00"
             + "\n\n";
             
       Assert.assertEquals(test, useTaxList.summary());

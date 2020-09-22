@@ -14,7 +14,7 @@ public class TruckTest {
 
    /**
     * Set up for all tests.
-    * @throws NegativeValueException
+    * @throws NegativeValueException when tons is negative
     */
    @Before public void setUp() throws NegativeValueException {
       truck1 
@@ -54,7 +54,7 @@ public class TruckTest {
    
    /**
     * Test truck setters/getters.
-    * @throws NegativeValueException
+    * @throws NegativeValueException when tons is negative
     */
    @Test public void settersGettersTest() throws NegativeValueException {
       Truck tempTruck = new Truck("TempOwner", "TempCar", 0, true, 0);
