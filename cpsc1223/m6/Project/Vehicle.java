@@ -21,7 +21,7 @@ public abstract class Vehicle implements Comparable<Vehicle> {
     * @param yearMakeModelIn year make and model of the vehicle
     * @param valueIn value of the vehicle
     * @param altFuelIn true if the vehicle is an alternative fuel vehicle
-    * @throws NegativeValueException
+    * @throws NegativeValueException when value is negative
     */
    public Vehicle(String  ownerIn, 
                   String  yearMakeModelIn, 
@@ -114,7 +114,7 @@ public abstract class Vehicle implements Comparable<Vehicle> {
     * Setter for vehicle value.
     *
     * @param valueIn value of vehicle
-    * @throws NegativeValueException
+    * @throws NegativeValueException  when value is negative
     */ 
    public void setValue(double valueIn) throws NegativeValueException {
       if (valueIn < 0) {

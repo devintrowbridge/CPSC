@@ -30,7 +30,7 @@ public class Division {
     * @param numerator top number
     * @param denominator bottom number
     * @return floating point result
-    * @throws IllegalArgumentException
+    * @throws IllegalArgumentException if the denominator is zero
     */
    public static double decimalDivide(int numerator, int denominator) 
       throws IllegalArgumentException {

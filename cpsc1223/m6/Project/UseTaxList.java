@@ -100,6 +100,8 @@ public class UseTaxList {
             addExcludedRecord(e + " in:\n" + record);
          }
       }
+      
+      fileScan.close();
    }
    
    /** 

@@ -19,7 +19,7 @@ public class Car extends Vehicle {
     * @param yearMakeModelIn year make and model of the vehicle
     * @param valueIn value of the vehicle
     * @param altFuelIn true if the vehicle is an alternative fuel vehicle
-    * @throws NegativeValueException
+    * @throws NegativeValueException when value is negative
     */
    public Car(String  ownerIn, 
               String  yearMakeModelIn, 

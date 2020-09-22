@@ -13,7 +13,7 @@ public class SemiTractorTrailerTest {
 
    /**
     * Set up for all tests.
-    * @throws NegativeValueException
+    * @throws NegativeValueException when tons/axles is negative
     */
    @Before public void setUp() throws NegativeValueException {
       semi1 = new SemiTractorTrailer("Williams, Pat", 
@@ -49,7 +49,7 @@ public class SemiTractorTrailerTest {
    
    /**
     * Test semi setters/getters.
-    * @throws NegativeValueException
+    * @throws NegativeValueException when tons/axles is negative
     */
    @Test public void settersGettersTest() throws NegativeValueException {
       SemiTractorTrailer tempSemi 
