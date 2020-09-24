@@ -1,0 +1,19 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+%opening
+\title{Programming Project 3 Report}
+\author{Devin K. Trowbridge}
+
+\begin{document}
+
+\maketitle
+
+Code compiles and runs successfully on Windows 7 using VS 2017 (v141) targeting Windows SDK 10.0.17134.0.
+
+This assignment made me feel much more confident in my assembly skills. The first exercise was not terrible, simply a matter of understanding the parameters and return values for some procedures.
+
+I did have some trouble setting the counter for the second exercise. Initially I thought the $\verb|SIZEOF|$ or $\verb|LENGTHOF|$ operator would give the length of the string. Then I wrote the loop to break when it encountered a null character. Then I finally remembered that the string length is an output of the $\verb|ReadString|$ procedure.
+
+For the third exercise, I debated creating a third buffer to hold the new string vs just concatenating the second string to the first. I went with the former since it is safer and has no risk of corrupting other data declared after the first string.
+\end{document}
