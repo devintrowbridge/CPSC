@@ -10,10 +10,12 @@ ExitProcess proto,dwExitCode:dword
 	promptStr  BYTE "Please enter a sentence: ",0  ; input prompt
   promptChar BYTE "Please enter a character: ",0 ; input char
   
-  buffer1    BYTE  80 DUP (00h)                  ; General use input buffer
-  buffer2    BYTE  80 DUP (00h)                  ; General use input buffer
+  buffer1    BYTE  64 DUP (00h)                  ; General use input buffer
+  buffer2    BYTE  64 DUP (00h)                  ; General use input buffer
+  buffer3    BYTE 128 DUP (00h)                  ; General use input buffer
   byteCount1 DWORD ?                             ; Holds character count for buffer1
   byteCount2 DWORD ?                             ; Holds character count for buffer2
+  byteCount3 DWORD ?                             ; Holds character count for buffer3
   charCount  DWORD ?
   
   decStr     BYTE "Decimal length: ",0
@@ -125,6 +127,7 @@ Exercise2 ENDP
 ;            
 ;--------------------------------------------
 Exercise3 PROC 
+  ;========= Get user input =========
   ; Prompt the user for first sentence
   mov   edx,OFFSET firstStr
   call  WriteString
@@ -146,38 +149,41 @@ Exercise3 PROC
   mov   byteCount2,eax
   call  WriteCRLF
   
-  ; Get things ready to concat buff2 to buff1
-  mov   esi,OFFSET buffer2
-  mov   edi,OFFSET buffer1
-  add   edi,byteCount1  ; point at the tail of buff1
-  mov   ecx,byteCount2  ; loop for the length of buff2
-  
-  ; Copy the characters from buffer2 to the end of buffer1
-  ; Note this can potentially corrupt buffer 2
+  ;========= Move Strings to buffer 3 =========
+  ; Get things ready to copy buff1 to buff3
   cld
-  rep movsb
+  mov   esi,OFFSET buffer1
+  mov   edi,OFFSET buffer3
+  mov   ecx,byteCount1      ; loop for the length of buff1
+  rep   movsb               ; Copy the characters from buffer1 to buffer3
+  
+  ; Get things ready to concat buff2 to buff3
+  mov   esi,OFFSET buffer2
+  mov   ecx,byteCount2      ; loop for the length of buff2
+  rep   movsb
 
   ; Store the length of the new string
-  mov   edx,byteCount1
-  add   edx,byteCount2
-  mov   byteCount1,edx
+  mov   edx,edi
+  sub   edx,OFFSET buffer3
+  mov   byteCount3, edx
   
+  ;========= Write stuff to console =========
   ; Write concatenated string to console
-  mov   edx,OFFSET buffer1
+  mov   edx,OFFSET buffer3
   call  WriteString
   call  WriteCRLF
 
   ; Write length of string in decimal 
   mov   edx,OFFSET decStr
   call  WriteString
-  mov   eax,byteCount1
+  mov   eax,byteCount3
   call  WriteDec  
   call  WriteCRLF
   
   ; Write length of string in hex 
   mov   edx,OFFSET hexStr
   call  WriteString
-  mov   eax,byteCount1
+  mov   eax,byteCount3
   call  WriteHex 
   call  WriteCRLF
   
