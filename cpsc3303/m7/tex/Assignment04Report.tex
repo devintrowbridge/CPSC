@@ -1,0 +1,21 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+%opening
+\title{Programming Assignment 4 Report}
+\author{Devin K. Trowbridge}
+
+\begin{document}
+
+\maketitle
+
+Code compiles and runs successfully on Windows 7 using VS 2017 (v141) targeting Windows SDK 10.0.17134.0.
+
+This was definitely the most challenging assignment to date. There were 3 main issues that I had:
+\begin{enumerate}
+  \item Figuring out exactly how little information I could get away with for each procedure. At first I thought I could get away with using just the two strings and insert position for the insert string procedure. Eventually for my own sanity, I ended up passing in the length of the strings as well. I considered other alternatives, but wasn't happy with any. Since the $\verb|ReadString|$ procedure provides the length of the string, I decided to take advantage of that.
+  \item Once I figured out what parameters I needed, I confidently wrote my procedure, pressed build, and was shocked when it didn't work. I spent a while trying to work through the pointer arithmetic in my head. I became exasperated and the more I looked at the code, the more confused I got. Eventually I resorted to an excel spreadsheet to keep track of how the address registers were moving around memory. Once I began working in the spreadsheet, all of my problems began to jump out at me. 
+  \item Keeping track of what each register is doing is very challenging. High level languages are so nice with their named variables that describe what that variable's use is. Heavily commenting my procedures was my rememdy for this, as I'm sure you will be able to tell.
+\end{enumerate}
+
+\end{document}
