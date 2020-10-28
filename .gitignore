@@ -20,3 +20,6 @@
 *.bbl
 *.blg
 *.out
+*.dvi
+*.xcp
+.idea/
