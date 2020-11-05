@@ -1,0 +1,45 @@
+\documentclass[format=sigconf]{acmart}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+%opening
+\title{Compelling Decryption}
+\author{Devin Trowbridge}
+\affiliation{%
+  \department{Computer Science and Software Engineering}
+  \institution{Auburn University}
+  \email{dkt0003@auburn.edu}
+  \city{Huntsville}
+  \state{Alabama}
+  \country{United States}}
+
+\begin{document}
+
+\maketitle
+
+\section{The Right to Privacy}
+
+In 2001 Congress signed the Providing Appropriate Tools Required to Intercept and Obstruct Terrorism Act of 2001 into law. Three years later in response to the PATRIOT Act, Ladar Levison launched Lavabit, an encrypted email company designed to protect users' data from prying eyes. In July 2013, the US government attempted to compel Lavabit into providing law enforcement with the cryptographic keys to all of Lavabit's users. Lavabit refused, the court held Lavabit in contempt, and Lavabit suspended operation shortly after.
+No the government should not have the authority to compel individuals or organizations to decrypt their data.
+
+Disclosing the means of decryption amounts to testimony. 
+  Individuals have a right to not self-incriminate.
+  If confessing the key to an encrypted medium would reveal evidence that is incriminating, you should have a right to not disclose the key.
+  Disclosing a key implies (but does not prove) that ownership over the contents of the encrypted medium. If they manage to decrypt the data without your help, they still have to prove that own the data.
+
+Stuck between incriminating yourself, perjury, and court holding you in contempt. 
+
+The foregone conclusion is one exception to this rule.
+  If the government can prove that you know the password to an encrypted device, you can be compelled. This does not necissarily mean you own the data though.
+  
+There is an element of deniability to disclosing the means to decrypt. Additionally, there are so called ``deniable encryption'' schemes that allow encrypted data to be decrypted into some different but sensible data. 
+
+Should the government maintain a cryptographic key database of all keys in use so they can access encrypted data at their leisure?
+  
+
+\medskip
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{Module03}
+
+\end{document}
