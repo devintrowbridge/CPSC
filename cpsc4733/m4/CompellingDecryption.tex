@@ -1,0 +1,47 @@
+\documentclass[format=sigconf]{acmart}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+%opening
+\title{Compelling Decryption}
+\author{Devin Trowbridge}
+\affiliation{%
+  \department{Computer Science and Software Engineering}
+  \institution{Auburn University}
+  \email{dkt0003@auburn.edu}
+  \city{Huntsville}
+  \state{Alabama}
+  \country{United States}
+}
+
+\begin{document}
+
+\maketitle
+
+\section{The Right to Privacy}
+
+In 2001 Congress signed the Providing Appropriate Tools Required to Intercept and Obstruct Terrorism Act of 2001 into law. Three years later in response to the PATRIOT Act, Ladar Levison launched Lavabit, an encrypted email company designed to protect users' data from prying eyes. In July 2013, the US government attempted to compel Lavabit into providing law enforcement with the cryptographic keys to all of Lavabit's users. Lavabit refused, the court held Lavabit in contempt, and Lavabit suspended operation shortly after \cite{lavabit}. Did the authorities have the right to compel Lavabit to disclose the means of decrypting the email traffic of all Lavabit's cusomters? Under 5th Amendment privlages, the right to silence, the government did not have the moral authority. The government put Lavabit in the impossible position of destroying its business, perjury, or contempt of court. Naive opponents argue that privacy is reserved for those who have something to hide. Such a stance is categorically false. In the US Supreme Court's opinion issued on \textit{McIntyre v. Ohio Elections Commission}, Justice John Paul Stevens writes, ``Anonymity is a shield from the tyranny of the majority. It exemplifies the purpose behind the Bill of Rights, and of the First Amendment in particular: to protect unpopular individuals from retaliation-and their ideas from suppresion-at the hand of an intolerant society'' \cite{stevens}. The government, and for that matter no-one, should have the authority to compel individuals or organizations to decrypt their data.
+
+Ultimately, you have a right to privacy and a right to silence.  The right to privacy is so ingrained in people, according to a search engine for constitutions of the world, 185 out of 203 in force government constitutions mention the ``Right to Privacy.'' In recent times, the right to privacy has engulfed public debate. Interestingly, the right to privacy is a relatively new concept, not showing up in courts or law until very nearly the 20th century \cite{haydel}. However, the unanimous decision by courts, governments, organizations, and people is there is a ``...right to pivacy in a 'penumbra' cast by the First, Third, Fourth, Fifth, and Ninth Amendments'' \cite{haydel}.
+
+Stuck between incriminating yourself, perjury, and court holding you in contempt is exactly the situation that the Fifth Amendment is designed 
+
+
+Disclosing the means of decryption amounts to testimony. 
+  Individuals have a right to not self-incriminate.
+  If confessing the key to an encrypted medium would reveal evidence that is incriminating, you should have a right to not disclose the key.
+  Disclosing a key implies (but does not prove) that ownership over the contents of the encrypted medium. If they manage to decrypt the data without your help, they still have to prove that own the data.
+
+The foregone conclusion is one exception to this rule.
+  If the government can prove that you know the password to an encrypted device, you can be compelled. This does not necissarily mean you own the data though.
+  
+There is an element of deniability to disclosing the means to decrypt. Additionally, there are so called ``deniable encryption'' schemes that allow encrypted data to be decrypted into some different but sensible data. 
+
+Should the government maintain a cryptographic key database of all keys in use so they can access encrypted data at their leisure?
+
+\medskip
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{Module04}
+
+\end{document}
