@@ -23,3 +23,4 @@
 *.dvi
 *.xcp
 .idea/
+*.gui
