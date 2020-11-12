@@ -105,6 +105,8 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
     public boolean add(T element) {
         if (element == null) return false;
         Node n = new Node(element);
+
+        // first item requires special care
         if (isEmpty()) {
             front = n;
             rear = n;
@@ -115,31 +117,19 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
         Node p = front;
         while (p != null) {
             if (element.compareTo(p.element) < 0) {
-                n.next = p;
-                n.next.prev = n;
-
-                // If inserting before the front, there is no previous
-                if (p != front) {
-                    n.prev = p.prev;
-                    n.prev.next = n;
-                } else {
-                    front = n;
-                }
-
-                ++size;
+                if (p == front) pushFront(element);
+                else pushMid(element, p);
                 return true;
             }
             else if (element.compareTo(p.element) > 0) p = p.next;
             else return false; // if they're equal return false since we don't allow dupes
         }
 
-        // if we exit the loop without hitting any of the conditions, we're at the rear of the linked list
-        n.prev = rear;
-        n.prev.next = n;
-        rear = n;
-        ++size;
+        // If we exit the loop without hitting any of the conditions, that means element is the
+        // greatest value in the set, so we push it to the back
+        pushBack(element);
 
-        return false;
+        return true;
     }
 
     /**
@@ -153,15 +143,24 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
      * @return  true if collection is changed, false otherwise.
      */
     public boolean remove(T element) {
-        if (element == null || !contains(element)) return false;
+        if (element == null) return false;
+        if (size == 0)       return false;
+
+        // last item requires special care
+        if (size == 1 && element.compareTo(front.element) == 0) {
+            front = null;
+            rear  = null;
+            --size;
+            return true;
+        }
 
         Node p = front;
-        for (int i = 0; i < size; ++i) {
+        while (p != null) {
             if (element.compareTo(p.element) != 0) p = p.next;
             else {
-                p.prev.next = p.next;
-                p.next.prev = p.prev;
-                --size;
+                if      (p == front) popFront();
+                else if (p == rear ) popBack();
+                else                 popMid(p);
                 return true;
             }
         }
@@ -177,9 +176,8 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
      * @return  true if this collection contains the specified element, false otherwise.
      */
     public boolean contains(T element) {
-        Iterator<T> it = iterator();
-        while (it.hasNext()) {
-            if (element.compareTo(it.next()) == 0) return true;
+        for (T this_element : this) {
+            if (element.compareTo(this_element) == 0) return true;
         }
         return false;
     }
@@ -194,22 +192,25 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
      *               the parameter set, false otherwise
      */
     public boolean equals(Set<T> s) {
+        if (s.isEmpty() && this.isEmpty()) return true;
+        if (s.isEmpty() ^  this.isEmpty()) return false;
+        if (s.size()    != this.size())    return false;
+
         Iterator<T> this_it = iterator();
         Iterator<T> s_it = s.iterator();
 
         // iterate  over this
-        while (this_it.hasNext()) {                        // O(N^2)
-            if (!s.contains(this_it.next())) return false;
+        for (T element : this) {                        // O(N^2)
+            if (!s.contains(element)) return false;
         }
 
         // iterate over other set
-        while (s_it.hasNext()) {                            // O(N^2)
-            if (!this.contains(s_it.next())) return false;
+        for (T element : s) {                            // O(N^2)
+            if (!this.contains(element)) return false;
         }
 
         return true;
     }
-
 
     /**
      * Tests for equality between this set and the parameter set.
@@ -222,6 +223,7 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
     public boolean equals(LinkedSet<T> s) {
         if (s.isEmpty() && this.isEmpty()) return true;
         if (s.isEmpty() ^  this.isEmpty()) return false;
+        if (s.size()    != this.size())    return false;
 
         Iterator<T> this_it = this.iterator();
         Iterator<T> s_it = s.iterator();
@@ -233,25 +235,21 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
         return true;
     }
 
-
     /**
      * Returns a set that is the union of this set and the parameter set.
      *
      * @return  a set that contains all the elements of this set and the parameter set
      */
     public Set<T> union(Set<T> s){
-        if (s.isEmpty() && this.isEmpty()) return null;
-
-        Iterator<T> this_it = this.iterator();
-        Iterator<T> s_it = s.iterator();
+        if (s.isEmpty()) return this;
+        if (this.isEmpty()) return s;
         Set<T> rtn_set = new LinkedSet<T>();
 
-        while (this_it.hasNext()) rtn_set.add(this_it.next()); // O(N^2)
-        while (s_it.hasNext()) rtn_set.add(s_it.next());       // O(N^2)
+        for (T element : this) rtn_set.add(element); // O(N^2)
+        for (T element : s)    rtn_set.add(element); // O(N^2)
 
         return rtn_set;
     }
-
 
     /**
      * Returns a set that is the union of this set and the parameter set.
@@ -259,16 +257,17 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
      * @return  a set that contains all the elements of this set and the parameter set
      */
     public Set<T> union(LinkedSet<T> s){
-        if (s.isEmpty() && this.isEmpty()) return null;
+        if (s.isEmpty()) return this;
+        if (this.isEmpty()) return s;
 
         Iterator<T> this_it = this.iterator();
         Iterator<T> s_it = s.iterator();
-        Set<T> rtn_set = new LinkedSet<T>();
 
         T this_current = this_it.next();
         T s_current = s_it.next();
 
-        while (this_it.hasNext() || s_it.hasNext()) {
+        Set<T> rtn_set = new LinkedSet<T>();
+        while (s_it.hasNext() && this_it.hasNext()) {
             if (this_current.compareTo(s_current) < 0) {
                 rtn_set.add(this_current);
                 this_current = this_it.next();
@@ -278,6 +277,21 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
                 s_current = s_it.next();
             }
         }
+
+        // Add any remaining elements out of each set
+        while (s_it.hasNext()) {
+            rtn_set.add(s_current);
+            s_current = s_it.next();
+        }
+
+        while (this_it.hasNext()) {
+            rtn_set.add(s_current);
+            this_current = this_it.next();
+        }
+
+        // Add the last element of each set
+        rtn_set.add(this_current);
+        rtn_set.add(s_current);
 
         return rtn_set;
     }
@@ -289,14 +303,11 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
      * @return  a set that contains elements that are in both this set and the parameter set
      */
     public Set<T> intersection(Set<T> s) {
-        if (s.isEmpty() && this.isEmpty()) return null;
-
-        Iterator<T> this_it = this.iterator();
         Set<T> rtn_set = new LinkedSet<T>();
+        if (s.isEmpty() || this.isEmpty()) return rtn_set;
 
-        while (this_it.hasNext()) {
-            T current = this_it.next();
-            if (s.contains(current)) rtn_set.add(current);
+        for (T element : this) {
+            if (s.contains(element)) rtn_set.add(element);
         }
 
         return rtn_set;
@@ -310,25 +321,30 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
      *            this set and the parameter set
      */
     public Set<T> intersection(LinkedSet<T> s) {
-        if (s.isEmpty() && this.isEmpty()) return null;
+        Set<T> rtn_set = new LinkedSet<T>();
+        if (s.isEmpty() || this.isEmpty()) return rtn_set;
 
         Iterator<T> this_it = this.iterator();
         Iterator<T> s_it = s.iterator();
-        Set<T> rtn_set = new LinkedSet<T>();
 
         T this_current = this_it.next();
         T s_current = s_it.next();
 
-        while (this_it.hasNext()) {
-            if (this_current.compareTo(s_current) <= 0) {
-                rtn_set.add(this_current);
+        while (this_it.hasNext() && s_it.hasNext()) {
+            if (this_current.compareTo(s_current) < 0) { // increment this
                 this_current = this_it.next();
             }
-            else {
-                rtn_set.add(s_current);
+            else if(this_current.compareTo(s_current) > 0) { // increment s
                 s_current = s_it.next();
             }
+            else { //add and increment both
+                rtn_set.add(s_current);
+                s_current = s_it.next();
+                this_current = this_it.next();
+            }
         }
+
+        if (this_current.compareTo(s_current) == 0) rtn_set.add(s_current);
 
         return rtn_set;
     }
@@ -340,15 +356,15 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
      * @return  a set that contains elements that are in this set but not the parameter set
      */
     public Set<T> complement(Set<T> s) {
-        Iterator<T> this_it = this.iterator();
         Set<T> rtn_set = new LinkedSet<T>();
+        if (this.isEmpty()) return rtn_set;
+        if (   s.isEmpty()) return this;
 
-        while (this_it.hasNext()) {
-            T current = this_it.next();
-            if (!s.contains(current)) rtn_set.add(current);
+        for (T element : this) {
+            if (!s.contains(element)) rtn_set.add(element);
         }
 
-        return null;
+        return rtn_set;
     }
 
 
@@ -360,18 +376,37 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
      *            set but not the parameter set
      */
     public Set<T> complement(LinkedSet<T> s) {
+        Set<T> rtn_set = new LinkedSet<T>();
+        if (this.isEmpty()) return rtn_set;
+        if (   s.isEmpty()) return this;
 
         Iterator<T> this_it = this.iterator();
         Iterator<T> s_it    = s.iterator();
-        Set<T> rtn_set = new LinkedSet<T>();
 
-        while (this_it.hasNext()) {
-            T this_current = this_it.next();
-            while (s_it.hasNext()) {
-                T s_current = s_it.next();
-                if (s_current.compareTo(this_current) > 0) rtn_set.add(this_current);
+        // Already checked to make sure both sets have at least one element so
+        // calling next before checking is permissible
+        T this_element = this_it.next();
+        T s_element = s_it.next();
+
+        while(this_it.hasNext() && s_it.hasNext()) {
+            if (this_element.compareTo(s_element) < 0) { // smaller than any element of either set
+                rtn_set.add(this_element);
+                this_element = this_it.next();
+            }
+            else if (this_element.compareTo(s_element) > 0) {
+                s_element = s_it.next();
+            }
+            else {
+                s_element = s_it.next();
+                this_element = this_it.next();
             }
         }
+
+        // If we hit the end of s before this, need to add the rest
+        while (this_it.hasNext()) rtn_set.add(this_it.next());
+
+        // Add the last element in this
+        if (this_element.compareTo(s_element) != 0) rtn_set.add(this_element);
 
         return rtn_set;
     }
@@ -412,11 +447,85 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
     //////////////////////////////
     // Private utility methods. //
     //////////////////////////////
+    /**
+     * Pushes an element onto the front of the list
+     *
+     * @param element element to push
+     */
+    private void pushFront(T element) {
+        Node n = new Node(element);
+        n.next = front;
+        front.prev = n;
+        front = n;
+        ++size;
+    }
 
+    /**
+     * Pushes an element into the middle of the list
+     *
+     * @param element element to push
+     * @param nextNode node that comes immediately after the element
+     */
+    private void pushMid(T element, Node nextNode) {
+        Node n = new Node(element);
+        n.next = nextNode;
+        n.prev = nextNode.prev;
+        n.next.prev = n;
+        n.prev.next = n;
+        ++size;
+    }
+
+    /**
+     * Pushes an element onto the back of the list
+     *
+     * @param element element to push
+     */
+    private void pushBack(T element) {
+        Node n = new Node(element);
+        rear.next = n;
+        n.prev = rear;
+        rear = n;
+        ++size;
+    }
+
+    /**
+     * Pops an element off the front of the list
+     */
+    private T popFront() {
+        T rtnEl = front.element;
+        front = front.next;
+        front.prev = null;
+        --size;
+        return rtnEl;
+    }
+
+    /**
+     * Pops an element off the middle of the list
+     * @param n node to remove from the list
+     */
+    private T popMid(Node n) {
+        T rtnEl = n.element;
+        n.next.prev = n.prev;
+        n.prev.next = n.next;
+        --size;
+        return rtnEl;
+    }
+
+    /**
+     * Pops an element off the back of the list
+     */
+    private T popBack() {
+        T rtnEl = rear.element;
+        rear = rear.prev;
+        rear.next = null;
+        --size;
+        return rtnEl;
+    }
 
     ////////////////////
     // Nested classes //
     ////////////////////
+
 
     public class AscendingIterator implements Iterator<T> {
         Node current;
@@ -426,15 +535,18 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
         }
 
         public boolean hasNext() {
-            if (current == null) return false;
-            return current.next != null;
+            return current != null;
         }
 
         public T next() {
             if (!hasNext()) throw new NoSuchElementException();
-            Node rtn_obj = current;
+            T rtn_element = current.element;
             current = current.next;
-            return (T) rtn_obj;
+            return rtn_element;
+        }
+
+        public void remove() {
+            LinkedSet.this.remove(current.prev.element);
         }
     };
 
@@ -446,39 +558,59 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
         }
 
         public boolean hasNext() {
-            return current.prev != null;
+            return current != null;
         }
 
         public T next() {
             if (!hasNext()) throw new NoSuchElementException();
-            Node rtn_obj = current;
+            T rtn_element = current.element;
             current = current.prev;
-            return (T) rtn_obj;
+            return rtn_element;
+        }
+
+        public void remove() {
+            LinkedSet.this.remove(current.next.element);
         }
     };
 
     public class powerSetIterator implements Iterator<Set<T>> {
-        Set<T> current = null;
-        HashSet<Set<T>> powerSet = new HashSet<Set<T>>(null);
-        int iterations = 0;
+        LinkedSet<T> current = new LinkedSet<>();
 
-        public powerSetIterator(Set<T> set) {
-            if (set.isEmpty()) return;
-
-            for (T element : set) {
-                set.remove(element);
-                powerSet.add(set);
-            }
+        public powerSetIterator(LinkedSet<T> set) {
+            if (set == null) throw new NullPointerException();
+            for (T element : set) current.add(element);
         }
 
         public boolean hasNext() {
-            return powerSet.iterator().hasNext();
+            return current != null;
         }
 
         public Set<T> next() {
-            if (powerSet.iterator().hasNext()) return powerSet.iterator().next();
-            return null;
+            if (!hasNext()) throw new NoSuchElementException();
+            Set<T> rtn_set = new LinkedSet<T>();
+
+            if (current.size == 0) {
+                current = null;
+                return rtn_set;
+            }
+            if (current.size == 1) {
+                rtn_set.add(current.front.element);
+                current.remove(current.front.element);
+                return rtn_set;
+            }
+            if (current.size == 2) {
+                for (T element : current) {
+                    rtn_set.add(element);
+                }
+
+
+                return rtn_set;
+            }
+
+            return rtn_set;
         }
+
+
     }
 
 
