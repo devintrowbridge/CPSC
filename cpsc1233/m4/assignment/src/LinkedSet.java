@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -11,7 +13,7 @@ import java.util.NoSuchElementException;
  * efficiency.
  *
  * @author Dean Hendrix (dh@auburn.edu)
- * @author YOUR NAME (you@auburn.edu)
+ * @author Devin Trowbridge (dkt0003@auburn.edu)
  *
  */
 public class LinkedSet<T extends Comparable<T>> implements Set<T> {
@@ -441,7 +443,7 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
      * @return  an iterator over members of the power set
      */
     public Iterator<Set<T>> powerSetIterator() {
-        return new powerSetIterator(this);
+        return new PowerSetIterator(this);
     }
 
     //////////////////////////////
@@ -527,8 +529,14 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
     ////////////////////
 
 
+    /**
+     * Provides an implementation of and ascending iterator
+     * over this set.
+     *
+     * @author Devin Trowbridge (dkt0003@auburn.edu)
+     */
     public class AscendingIterator implements Iterator<T> {
-        Node current;
+        private Node current;
 
         AscendingIterator() {
             current = front;
@@ -550,8 +558,14 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
         }
     };
 
+    /**
+     * Provides an implementation of and descending iterator
+     * over this set.
+     *
+     * @author Devin Trowbridge (dkt0003@auburn.edu)
+     */
     public class DescendingIterator implements Iterator<T> {
-        Node current;
+        private Node current;
 
         DescendingIterator() {
             current = rear;
@@ -573,43 +587,62 @@ public class LinkedSet<T extends Comparable<T>> implements Set<T> {
         }
     };
 
-    public class powerSetIterator implements Iterator<Set<T>> {
-        LinkedSet<T> current = new LinkedSet<>();
+    /**
+     * Provides an implementation of an iterator over the power set of this set
+     * A power set is the set of all subsets of a particular set.
+     * There are 2^N members of the powerset where N is the number of elements in this set.
+     *
+     * @author Devin Trowbridge (dkt0003@auburn.edu)
+     */
+    public class PowerSetIterator implements Iterator<Set<T>> {
+        private Set<T> set = new LinkedSet<>();
+        private int current = 0;
+        private int max = 1;
+        private String paddingString;
 
-        public powerSetIterator(LinkedSet<T> set) {
-            if (set == null) throw new NullPointerException();
-            for (T element : set) current.add(element);
+        public PowerSetIterator(LinkedSet<T> inSet) {
+            if (inSet == null) throw new NullPointerException();
+            for (T element : inSet) {
+                set.add(element);
+                max *= 2; // 2^n elements in the powerset Everytime we add an element, multiply max by two
+            }
+
+            paddingString = "%" + set.size() + "s";
         }
 
         public boolean hasNext() {
-            return current != null;
+            return current < max;
         }
 
         public Set<T> next() {
             if (!hasNext()) throw new NoSuchElementException();
             Set<T> rtn_set = new LinkedSet<T>();
 
-            if (current.size == 0) {
-                current = null;
+            // Handle case where this is the empty set
+            if (max == 1) {
+                ++current;
                 return rtn_set;
             }
-            if (current.size == 1) {
-                rtn_set.add(current.front.element);
-                current.remove(current.front.element);
-                return rtn_set;
-            }
-            if (current.size == 2) {
-                for (T element : current) {
-                    rtn_set.add(element);
+
+            // Get the binary string representation of the current iteration
+            String bitmask = Integer.toBinaryString(current++);
+            bitmask = String.format(paddingString, bitmask).replace(' ', '0');
+
+            Iterator<T> set_it = set.iterator();
+
+            int i = 0;
+            for (char c : bitmask.toCharArray()) {
+                if (set_it.hasNext()) {
+                    if (c == '1') {
+                        rtn_set.add(set_it.next());
+                    } else {
+                        set_it.next();
+                    }
                 }
-
-
-                return rtn_set;
             }
 
             return rtn_set;
         }
-
 
     }
 

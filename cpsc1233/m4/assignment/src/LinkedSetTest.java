@@ -443,10 +443,30 @@ class LinkedSetTest {
         set.add(5);
 
         Iterator<Set<Integer>> it = set.powerSetIterator();
+        Set<Integer> currentSet = new LinkedSet<>();
         for (int i = 0; i < 32; ++i) {
             assertTrue(it.hasNext());
-            it.next();
+            currentSet = it.next();
         }
+
+        boolean caught = false;
+        try {
+            it.next();
+        } catch (NoSuchElementException e) {
+            caught = true;
+        }
+        assertTrue(caught);
+    }
+
+    @org.junit.jupiter.api.Test
+    void powerSetIteratorNull() {
+        LinkedSet<Integer> set = new LinkedSet<>();
+        Iterator<Set<Integer>> it = set.powerSetIterator();
+        Set<Integer> expected = new LinkedSet<>();
+
+        assertTrue(it.hasNext());
+        assertTrue(expected.equals(it.next()));
+        assertFalse(it.hasNext());
 
         boolean caught = false;
         try {
