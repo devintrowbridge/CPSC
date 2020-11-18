@@ -86,9 +86,10 @@ public class DktWordSearchGame implements WordSearchGame {
        if (!isLexLoaded) throw new IllegalStateException();
        SortedSet<String> validWords = new TreeSet<>();
        for (String word : lexicon) {
-           if (word.length() >= minimumWordLength) {
-               if (isOnBoard(word).size() != 0) validWords.add(word);
-           }
+          if (word.length() >= minimumWordLength) {
+             if (isOnBoard(word).size() != 0) validWords.add(word);
+             clearVisits();
+          }
        }
        return validWords;
    }
@@ -99,7 +100,7 @@ public class DktWordSearchGame implements WordSearchGame {
        if (!isLexLoaded) throw new IllegalStateException();
        int score = 0;
        for (String word : words) {
-           score += 1 + (word.length() - minimumWordLength);
+          score += 1 + (word.length() - minimumWordLength);
        }
        return score;
    }
@@ -115,30 +116,33 @@ public class DktWordSearchGame implements WordSearchGame {
    public boolean isValidPrefix(String prefixToCheck) {
        if (prefixToCheck == null) throw new IllegalArgumentException();
        if (!isLexLoaded) throw new IllegalStateException();
-       return lexicon.contains(lexicon.ceiling(prefixToCheck));
+       String word = lexicon.ceiling(prefixToCheck);
+       if (word == null) return false;
+       return word.startsWith(prefixToCheck);
    }
 
    @Override
    public List<Integer> isOnBoard(String wordToCheck) {
-       if (wordToCheck == null) throw new IllegalArgumentException();
-       if (!isLexLoaded) throw new IllegalStateException();
-       List<Integer> rtnList = new ArrayList<>();
-       Position pos;
-       // Search for the word to check using each position on the board
-       // as a starting position
-       for (int row = 0; row < width; ++row) {
-           for (int col = 0; col < width; ++col) {
-               pos = new Position(row, col);
-               rtnList = dfsFindWord(pos, wordToCheck);
-               // The search function guarantees an empty list if
-               // the word is not found. Break out of the double loop
-               // so we don't waste cycles continuing to search
-               if (!rtnList.isEmpty()) break;
-               clearVisits();
-           }
-           if (!rtnList.isEmpty()) break;
-       }
-       return rtnList;
+      if (wordToCheck == null) throw new IllegalArgumentException();
+      if (!isLexLoaded) throw new IllegalStateException();
+      List<Integer> rtnList = new ArrayList<>();
+      Position pos;
+
+      // Search for the word to check using each position on the board
+      // as a starting position
+      for (int row = 0; row < width; ++row) {
+         for (int col = 0; col < width; ++col) {
+            pos = new Position(row, col);
+            rtnList = dfsFindWord(pos, wordToCheck);
+            clearVisits();
+            // The search function guarantees an empty list if
+            // the word is not found. Break out of the double loop
+            // so we don't waste cycles continuing to search
+            if (!rtnList.isEmpty()) break;
+         }
+         if (!rtnList.isEmpty()) break;
+      }
+      return rtnList;
    }
 
    /**
@@ -151,16 +155,20 @@ public class DktWordSearchGame implements WordSearchGame {
     */
    private List<Integer> dfsFindWord(Position pos, String wordToCheck) {
        List<Integer> rtnList = new ArrayList<>();
+
        // If we get to the end of the word, break the recursion
        if (wordToCheck.isEmpty()) return rtnList;
+
        // Check to make sure the string at the position is the prefix to the
        // word to check
        String posStr = getString(pos);
        if (wordToCheck.startsWith(posStr)) {
            rtnList.add(pos.flatIndex());
+
            // Generate the next substring to search for
            String subStr = wordToCheck.substring(posStr.length());
            if (subStr.isEmpty()) return rtnList;
+
            // For each of this position's neighbors,
            // try to search for the rest of the word recursively
            visit(pos);
@@ -169,6 +177,7 @@ public class DktWordSearchGame implements WordSearchGame {
                if (!isVisited(neighbor)) {
                    // Find the list
                    List<Integer> foundList = dfsFindWord(neighbor, subStr);
+
                    // If the list we found is the same size as the searched substr
                    // break out of the loop since we found a solution
                    if (!foundList.isEmpty()) {
@@ -177,6 +186,7 @@ public class DktWordSearchGame implements WordSearchGame {
                    }
                }
            }
+
            // If we couldn't find all of the letters return an empty list
            // and unvisit this spot since its still available
            rtnList.clear();
