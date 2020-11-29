@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
+\usepackage[official]{eurosym}
+
 %opening
 \title{Open Source Ethics}
 \author{Devin Trowbridge}
@@ -14,6 +16,11 @@
   \country{United States}
 }
 
+\begin{abstract}
+  Since its inception, the open source software development mantra has generated substantial conversation. How can these projects be organized? How can people all around the world accomplish so much together without ever meeting? Why are people doing so much work for free? Funding has always been an issue in open source, without most developers not paying much attention, instead writing code for, ``the love of the game.'' While certainly their right to not ask for money, is it ethical for those that rely on their software to not pay for it? This paper explores the question and determines companies have an ethical obligation to pay for open source software. The consequentialist approach offers some concrete, real-world consequences of failing to compensate open source developers.
+\end{abstract}
+
+
 \begin{document}
 
 \maketitle
@@ -22,15 +29,19 @@
 
 Network Time Protocol is one of the oldest internet protocols in use. Sitting in the application layer of the OSI model, NTP is used for synchronizing time between computer systems over networks, most notably the Internet. Truly a foundational piece of Internet software. NTP's longevity has offered it a substantial market share, ``as the preeminent time synchronization system for Macs, Windows, and Linux computers and most servers on networks.'' \cite{ntp} Perhaps most interestingly, NTP is, ``the open source code movement's first and biggest success [story]''. \cite{ntp} Who maintains this critical piece of the Internet infrastructure? In theory its the Network Time Foundation, but in practice NTP's fate is intertwined with Harlan Stenn's. Over the years, the number of NTP maintainers has shrunk down to just Mr. Stenn who had to consider abandoning his work on NTP in 2015 due to personal finance issues. How could a maintainer for a such critical and prolific piece of infrastructure be on the verge of going broke?
 
+\section{Funding Open Source}
+
 The Internet software ecosystem is filled with these so-called ``'Load Bearing Internet People',...[people] who maintain the software for a critical Internet service or library, and has to do it without organizational support or a budget backing him up.`` \cite{lbip} Finding stories of LBIPs struggling financially is not uncommon either. While creators and maintainers are creating and maintaining, large money making organizations around the world are profiting using the very same open source tools offering little in return to the open source community. Of course there are exceptions, particularly in the tech industry, but many organizations have little awareness of the plight of the open source developer. If these organizations profit so much off of open source software, surely they should shoulder the cost of developing it. Therefore, organizations that profit off of open source software have an ethical obligation to fund open source software.
 
-Companies profit the most off of open source software. \cite{gartner} 
+Companies profit the most off of open source software. In 2002, ''Amazon.com cut \$17 million (about 25\%) from its technology expenditure by deploying a Linux-based infrastructure to process millions of transactions per day.`` \cite{amazon}  InfoWorld, a web-only publication of information technology, claimed that, ''Companies with a \$1.1 million budget for office software [could] reduce their costs by as much as 20 percent by using OpenOffice software instead of Microsoft's Office product.`` \cite{infoworld} Even a study by the European Union   found in 2009 that reproducing Open Source applications internally would cost \euro{}12 billion. \cite{eu} On the other side of the coin, we have individuals who make little to no profit off of open source software. Private individuals merely use open source to save money not necessarily make money. Letting these large corporations hoard wealth created by open source developers does nothing but discourage the developers from working on open source. Mr. Stenn of NTP himself considered abandoning NTP. Without developers working on the unprofitable tools so many depend on, progress in the digital world slows.
 
-Open source works form a critical component of our modern infrastructures. NTP, OpenSSL, Linux. \cite{ford}
+Open source works form a critical component of our modern infrastructures. The Network Time Protocol is a perfect example of this. Perhaps an even more ubiquitous example is the Linux operating system. While Microsoft Windows and Mac OS dominate the world of desktop and personal computers (76\% and 17\%, respectively \cite{osuse}), Linux dominates the world of servers and infrastructure powering 96.3\% of the world's top 1 million servers and 90\% of all cloud infrastructure. \cite{hosting}. Similarly, OpenSSL, a cryptographic library for secure communication over networks, is the predominant offering in its niche with 54.5\% of the network security market share (followed by Thawte at 16.9\%). \cite{enlyft} Failing to compensate the developers of these open source products puts a huge security risk at critical components of our digital infrastructure. The consequences of leaving open source developers in financial peril is potentially a catastrophic and a huge target for those that might wish to do harm considering ''financial distress is one of the top motivators for becoming an insider threat.'' \cite{insider}
 
-Developers of open source works of software are not adequately compensated. 
+Developers of open source works of software are not adequately compensated. Once again, the Network Time Protocol is a perfect example of this. One of the brightest minds in computer science considering abandoning NTP for financial reasons. Going back to OpenSSL as well, when Steve Marquess joined the open source project he learned the main contribute, Stephen Henson, made one-fifth Marquess's salary despite Marquess being a much less skilled programmer. \cite{ford} Furthermore, in an email interview Marquess says, ``[I had] always assumed, (as the rest of the world) that the OpenSSL team was large, active, and well resourced.'' \cite{ford} The research of one open source freelancer, André Staltz, revealed 80\% of open source projects, ``we usually consider sustainable are actually receiving income below industry standards or even below the poverty threshold.'' \cite{staltz} For software as critical the roles open source fills, teams of developers are not unusual. Instead we have single developers that are scraping by, literally impoverished. Mr. Marquess wrote about the OpenSSL Heartbleed incident, ``The mystery is not that a few overworked volunteers missed this bug; the mystery is why it hasn't happened more often.'' \cite{ford} A clear consequence emerges. Without pay, developers are not as attracted to these projects leaving them severely understaffed and susceptible to not just normal bugs but potentially catastrophic security holes.
 
-Conclusion
+\section{Conclusion}
+
+While donations and goodwill have largely sustained the open source movement thus far, this financial system is hardly ethical. Looking to those who profit off of open source is the clear front runner for finding funding for these important, albeit relatively unknown, components of digital infrastructure. Why should they reap all the rewards of code they did not develop? Several models for this style of funding exist with varying degrees of adoption. Corporate sponsorship wherein a company donates man-hours or money to an open source project it has a direct interest in, for example Google and the Chromium project which powers Google Chrome. Government grants, similar to academic research grants are another possibility. Other industries have employed industry consortium to cooperatively maintain basic but critical tools, methods, standards, or in this case open source projects. There are numerous ways to get money where it is deserved the most, in the hands of those that maintain these essential projects.
 
 \medskip
 
