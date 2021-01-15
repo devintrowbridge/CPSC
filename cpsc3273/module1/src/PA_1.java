@@ -6,13 +6,13 @@ public class PA_1
 {
     //================================================
     public static void main(String[] args) throws IOException {
-        boolean[][] matrixG = new boolean[10000][10000];
+        byte[][] matrixG = new byte[Integer.MAX_VALUE/100000][Integer.MAX_VALUE/100000];
         Generate_Matrix(matrixG);
 
-        FileWriter  out = new FileWriter ("C:\\Users\\Tower\\Desktop\\output.txt");
+        FileWriter  out = new FileWriter ("output.txt");
 
         for (int n = 100; n < matrixG.length; n += 100) {
-            boolean[][] matrixA = new boolean[n][n];
+            byte[][] matrixA = new byte[n][n];
             Copy_Matrix(matrixA, matrixG, n);
 
             // Start time
@@ -20,7 +20,7 @@ public class PA_1
             for (int i = 0; i < n-2; ++i) {
                 for (int j = i + 1; j < n-1; ++j) {
                 // swap A[i] and A[j]
-                boolean buffer = matrixA[i][j];
+                    byte buffer = matrixA[i][j];
                 matrixA[i][j] = matrixA[j][i];
                 matrixA[j][i] = buffer;
                 }
@@ -46,18 +46,16 @@ public class PA_1
     }
 
     //================================================
-    private static void Generate_Matrix(boolean[][] matrix){
+    private static void Generate_Matrix(byte[][] matrix){
         Random generator = new Random();
-        for (int i = 0; i < matrix.length; ++i) {
-            for (int j = 0; j < matrix.length; ++j) {
-                matrix[i][j] = generator.nextBoolean();
-            }
+        for (byte[] bytes : matrix) {
+            generator.nextBytes(bytes);
         }
     }
 
     //================================================
-    private static void Copy_Matrix(boolean[][] matrixA, 
-                                    boolean[][] matrixG,
+    private static void Copy_Matrix(byte[][] matrixA,
+                                    byte[][] matrixG,
                                     int n){
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {

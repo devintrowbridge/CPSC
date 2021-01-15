@@ -18,8 +18,20 @@ src_extensions=.tex .ltx .latex .dtx .ins
 MakeIndex=
 QuickBuild=
 
+[item:opensource.bib]
+archive=true
+encoding=UTF-8
+highlight=BibTeX
+mode=BibTeX
+
 [item:opensource.kilepr]
 archive=true
 encoding=
 highlight=
 mode=
+
+[item:opensource.tex]
+archive=true
+encoding=UTF-8
+highlight=LaTeX
+mode=LaTeX
