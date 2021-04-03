@@ -6,11 +6,16 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch PA2",
+            "name": "Java: Current File",
             "request": "launch",
-            "mainClass": "PA2",
-            "projectName": "CPSC_98dda31c",
-            "cwd": "${workspaceFolder}\\cpsc3283\\m2"
-        }
+            "mainClass": "${file}"
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
     ]
 }
