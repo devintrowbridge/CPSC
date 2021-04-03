@@ -4,6 +4,14 @@ import java.io.IOException;
 public class Fibonacci {
 
 public static void main(String[] args) throws IOException  {
+    table = new int[100];
+    table[0] = 0;
+    table[1] = 1;
+
+    for (int i = 2; i <table.length; i++)   {
+        table[i] = -1;
+    }
+
 collectData();
 }
 
@@ -21,7 +29,7 @@ for (int i = 0; i <= 55; i++)    {
     double[] dT = new double[3];
     //--------------timing recursive----------------//
     startTime = System.nanoTime();
-    recursiveFibonacci(i);
+    //recursiveFibonacci(i);
     endTime = System.nanoTime();
     dT[0] = (double) endTime - startTime;
 
@@ -44,7 +52,7 @@ for (int i = 0; i <= 55; i++)    {
 }   
 
 out.close();
-System.out.println("Done...");
+System.out.println("Done.");
 }
 
 
@@ -59,27 +67,15 @@ public static int recursiveFibonacci(int n) {
     return (recursiveFibonacci(n-1) + recursiveFibonacci(n-2));
 }
 
-
-public static int dpFibonacci(int n)    {
-    int[] table = new int[100];
-
-    for (int i = 0; i <table.length; i++)   {
-    table[i] = -1;
+    private static int[] table;
+    public static int dpFibonacci(int n)    {
+       
+        if (table[n] != -1)  {
+            return table[n];
         }
-
-    if (n <= 2) {
-        return 1;
-    }
-
-    if (table[n] != -1)  {
-        return table[n];
-    }
-    
-    for (int i = 2; i <= n; i++)    {
-        table[i] = table[i-1] + table[i-2];
-    }
-    return table[n];
-     
+        table[n] = dpFibonacci(n-1) + dpFibonacci(n-2);
+        
+        return table[n];     
     }
 
     public static int iterativeFibonacci(int n) {
