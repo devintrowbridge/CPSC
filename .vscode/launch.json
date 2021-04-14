@@ -12,12 +12,13 @@
             "console": "integratedTerminal"
         },
         {
+<<<<<<< HEAD
+=======
+            "name": "Java: Current File",
+>>>>>>> 510c416ca4b60fc2becbdf6e893a608ef0d3af90
             "type": "java",
-            "name": "Launch PA2",
             "request": "launch",
-            "mainClass": "PA2",
-            "projectName": "CPSC_98dda31c",
-            "cwd": "${workspaceFolder}\\cpsc3283\\m2"
-        }
+            "mainClass": "${file}"
+        },
     ]
 }
